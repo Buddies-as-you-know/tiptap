@@ -1,4 +1,3 @@
-
 import React, { FC } from 'react'
 
 import LandingTemplate from '../templates/landingTemplate'
