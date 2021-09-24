@@ -1,9 +1,9 @@
 class CreateRooms < ActiveRecord::Migration[6.1]
   def change
     create_table :rooms do |t|
-      t.int :theme_id
+      t.references :theme
       t.string :name
-      t.int :count
+      t.integer :count
 
       t.timestamps
     end
