@@ -1,0 +1,2 @@
+class UserTap < ApplicationRecord
+end
