@@ -4,7 +4,7 @@ class CreateThemes < ActiveRecord::Migration[6.1]
       t.int :user_id
       t.string :name
       t.int :rooms_num
-      t.datetime :close_time
+      t.int :close_time
       t.bool :is_closed
 
       t.timestamps
