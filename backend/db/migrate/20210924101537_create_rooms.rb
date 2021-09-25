@@ -3,7 +3,7 @@ class CreateRooms < ActiveRecord::Migration[6.1]
     create_table :rooms do |t|
       t.references :theme
       t.string :name
-      t.integer :count
+      t.integer :count, null: false, default: 0
 
       t.timestamps
     end
