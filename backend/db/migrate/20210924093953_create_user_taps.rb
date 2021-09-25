@@ -3,7 +3,7 @@ class CreateUserTaps < ActiveRecord::Migration[6.1]
     create_table :user_taps do |t|
       t.references :user
       t.references :room
-      t.integer :count
+      t.integer :count, null: false
 
       t.timestamps
     end
