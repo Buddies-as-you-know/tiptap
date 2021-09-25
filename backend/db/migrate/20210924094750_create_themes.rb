@@ -5,7 +5,7 @@ class CreateThemes < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :rooms_num
       t.integer :close_time
-      t.bool :is_closed
+      t.boolean :is_closed
 
       t.timestamps
     end
