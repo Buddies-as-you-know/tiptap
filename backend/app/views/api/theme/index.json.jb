@@ -1,0 +1,12 @@
+json = {
+  searched_themes: @themes.map { |t| {
+    id: t.id,
+    user_id: t.user.id,
+    name: t.name,
+    rooms_num: t.rooms_num,
+    close_time: t.close_time,
+    is_closed: t.is_closed
+    }
+  }
+}
+json
