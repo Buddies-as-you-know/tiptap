@@ -1,0 +1,6 @@
+json = {
+  name: @user.name,
+  email: @user.email,
+  counts: @user.counts
+}
+json
