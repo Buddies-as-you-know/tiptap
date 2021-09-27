@@ -1,7 +1,10 @@
 import { Box, Button } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import SyncIcon from '@material-ui/icons/Sync';
+import React, { FC, useEffect, useState } from 'react'
+import { Api } from 'src/action/action'
 
+import { PostUserTaps } from '../../domain/postUserTaps'
 import TapButton from '../uiParts/tapButton'
 import TapsProgressBar from '../uiParts/tapsProgressBar'
 
@@ -75,6 +78,10 @@ const ThemeTemplate: FC<Props> = (props) => {
          // =========
          // taps POSTしてあげる
          //
+         const requestParams: PostUserTaps = {room_id: theme.rooms[room].id, counts: max}
+         Api.postUserTaps(requestParams).then((res: any) => {
+            console.log(res)
+         })
          setTaps(0)
          setMax(maxes[Math.floor(Math.random() * maxes.length)])
       }
