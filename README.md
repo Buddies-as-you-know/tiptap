@@ -3,8 +3,8 @@
 docker-compose build
 docker-compose run --rm frontend npm install
 
-docker-compose run backend db:migrate
-docker-compose run backend db:seed
+docker-compose run backend rails db:migrate
+docker-compose run backend rails db:seed
 ```
 
 # frontend
