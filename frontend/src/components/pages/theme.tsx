@@ -9,7 +9,7 @@ const Theme: FC = () => {
    <>
    {theme_with_single_room_closed.is_closed
       ? <RoomResultTemplate theme_result={ theme_with_two_room_closed }/>
-      : <ThemeTemplate />
+      : <ThemeTemplate theme={ theme_with_two_room_closed }/>
    }
    </>
    )
