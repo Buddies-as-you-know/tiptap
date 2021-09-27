@@ -18,7 +18,7 @@ docker-compose run backend rails db:seed
 docker-compose up
 ```
 
-if you update gem
+if you update some gems
 ```
 docker-compose run --rm backend bundle instal
 ```
