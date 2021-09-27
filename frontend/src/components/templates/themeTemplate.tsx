@@ -18,11 +18,10 @@ type Props = {
          name: string
          total_counts: number
          user_room_total_taps: number
-         users_taps?: { 
-            user_id: number
-            counts: number
-            created_at: number 
-         }[],
+         time_series?: {
+            num: number
+            counts:number
+         }[]
          taps_ranking?: {
             1: { 
                name: string

@@ -20,11 +20,10 @@ type Props = {
          name: string
          total_counts: number
          user_room_total_taps: number
-         users_taps: { 
-            user_id: number
-            counts: number
-            created_at: number 
-         }[],
+         time_series: {
+            num: number
+            counts:number
+         }[]
          taps_ranking: {
             1: { 
                name: string
@@ -76,7 +75,7 @@ const RoomTemplate: FC<Props> = (props) => {
                <h1>累計タップ数: {theme_result.rooms[room].total_counts}</h1>
             </Grid>
             <Grid item xs={12} sm={6} style={{ width: '100%' }}>
-               <TapsLineChart started_at={theme_result.created_at} closed_at={theme_result.close_time} users_taps={theme_result.rooms[room].users_taps}/>
+               <TapsLineChart started_at={theme_result.created_at} closed_at={theme_result.close_time} time_series={theme_result.rooms[room].time_series}/>
             </Grid>
             <Grid item>
                <EnthusiastsRanking taps_ranking={theme_result.rooms[room].taps_ranking}/>
