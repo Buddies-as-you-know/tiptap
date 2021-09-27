@@ -135,6 +135,23 @@ export const theme_with_two_room_closed = {
    ]
 }
 
+export const theme_with_single_room = {
+   name: "楽天インターン",
+   rooms_num: 1,
+   close_time: moment('2021-09-22T10:10:00').unix(),
+   is_closed: false,
+   user_id: 1,
+   created_at: moment('2021-09-22T09:25:00').unix(),
+   rooms: [
+      {
+         id: 1,
+         name: "楽天インターン",
+         total_counts: 220,
+         user_room_total_taps: 30,
+      }
+   ]
+}
+
 // Table "users" {
 //   "id" int
 //   "name" string
