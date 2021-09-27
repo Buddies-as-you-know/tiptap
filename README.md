@@ -19,4 +19,7 @@ docker-compose up
 ```
 
 if you update gem
+```
+docker-compose run --rm backend bundle instal
+```
 ./backend
