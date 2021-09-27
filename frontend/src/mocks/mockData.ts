@@ -6,8 +6,133 @@ export const users = {
    name: 'asahara',
    email: 'test@gmail.com',
    hogehoge_id: '000',
-   created_at: String(moment('2021-09-22T09:30:00').unix()),
-   updated_at: String(moment('2021-09-22T09:30:00').unix()),
+   created_at: moment('2021-09-22T09:30:00').unix(),
+   updated_at: moment('2021-09-22T09:30:00').unix(),
+}
+
+export const themes = {
+   searched_themes: [
+      {
+         id: 0,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 1,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 2,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 3,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+   ],
+}
+
+export const theme_with_single_room_closed = {
+   name: "楽天インターン",
+   rooms_num: 1,
+   close_time: moment('2021-09-22T10:10:00').unix(),
+   is_closed: true,
+   user_id: 1,
+   created_at: moment('2021-09-22T09:25:00').unix(),
+   rooms: [
+      {
+         id: 1,
+         name: "楽天インターン",
+         total_counts: 220,
+         user_room_total_taps: 30,
+         users_taps: [
+            { user_id: 1, counts: 30, created_at: moment('2021-09-22T09:30:00').unix() },
+            { user_id: 2, counts: 10, created_at: moment('2021-09-22T09:34:00').unix() },
+            { user_id: 3, counts: 10, created_at: moment('2021-09-22T09:40:00').unix() },
+            { user_id: 4, counts: 40, created_at: moment('2021-09-22T09:44:00').unix() },
+            { user_id: 5, counts: 40, created_at: moment('2021-09-22T09:50:00').unix() },
+            { user_id: 6, counts: 60, created_at: moment('2021-09-22T09:52:00').unix() },
+            { user_id: 7, counts: 10, created_at: moment('2021-09-22T09:52:00').unix() },
+            { user_id: 8, counts: 10, created_at: moment('2021-09-22T09:55:00').unix() },
+            { user_id: 9, counts: 10, created_at: moment('2021-09-22T10:01:00').unix() }
+         ],
+         taps_ranking: {
+            1: { name: "ほげほげ", total_taps: 1000 },
+            2: { name: "ぽけぽけ", total_taps: 200 },
+            3: { name: "こほこほ", total_taps: 130 }
+         }
+      }
+   ]
+}
+
+export const theme_with_two_room_closed = {
+   name: "阪神×楽天",
+   rooms_num: 2,
+   close_time: moment('2021-09-22T10:10:00').unix(),
+   is_closed: true,
+   user_id: 1,
+   created_at: moment('2021-09-22T09:25:00').unix(),
+   rooms: [
+      {
+         id: 1,
+         name: "楽天",
+         total_counts: 220,
+         user_room_total_taps: 30,
+         users_taps: [
+            { user_id: 1, counts: 30, created_at: moment('2021-09-22T09:30:00').unix() },
+            { user_id: 2, counts: 10, created_at: moment('2021-09-22T09:34:00').unix() },
+            { user_id: 3, counts: 10, created_at: moment('2021-09-22T09:40:00').unix() },
+            { user_id: 4, counts: 40, created_at: moment('2021-09-22T09:44:00').unix() },
+            { user_id: 5, counts: 40, created_at: moment('2021-09-22T09:50:00').unix() },
+            { user_id: 6, counts: 60, created_at: moment('2021-09-22T09:52:00').unix() },
+            { user_id: 7, counts: 10, created_at: moment('2021-09-22T09:52:00').unix() },
+            { user_id: 8, counts: 10, created_at: moment('2021-09-22T09:55:00').unix() },
+            { user_id: 9, counts: 10, created_at: moment('2021-09-22T10:01:00').unix() }
+         ],
+         taps_ranking: {
+            1: { name: "ほげほげ", total_taps: 1000 },
+            2: { name: "ぽけぽけ", total_taps: 200 },
+            3: { name: "こほこほ", total_taps: 130 }
+         }
+      },
+      {
+         id: 1,
+         name: "楽天",
+         total_counts: 220,
+         user_room_total_taps: 30,
+         users_taps: [
+            { user_id: 1, counts: 30, created_at: moment('2021-09-22T09:30:00').unix() },
+            { user_id: 2, counts: 10, created_at: moment('2021-09-22T09:34:00').unix() },
+            { user_id: 3, counts: 10, created_at: moment('2021-09-22T09:40:00').unix() },
+            { user_id: 4, counts: 40, created_at: moment('2021-09-22T09:44:00').unix() },
+            { user_id: 5, counts: 40, created_at: moment('2021-09-22T09:50:00').unix() },
+            { user_id: 6, counts: 60, created_at: moment('2021-09-22T09:52:00').unix() },
+            { user_id: 7, counts: 10, created_at: moment('2021-09-22T09:52:00').unix() },
+            { user_id: 8, counts: 10, created_at: moment('2021-09-22T09:55:00').unix() },
+            { user_id: 9, counts: 10, created_at: moment('2021-09-22T10:01:00').unix() }
+         ],
+         taps_ranking: {
+            1: { name: "ほげほげ", total_taps: 500 },
+            2: { name: "ぽけぽけ", total_taps: 100 },
+            3: { name: "こほこほ", total_taps: 80 }
+         }
+      }
+   ]
 }
 
 // Table "users" {
