@@ -1,6 +1,6 @@
 # Usage
 ```
-http://127.0.0.1:5000/synonym_gen?utterance=[単語]
+http://127.0.0.1:5000/synonym_gen?word=[単語]
 ```
 
 # Requirements
