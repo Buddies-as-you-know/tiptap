@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Landing from './components/pages/landing'
 import Theme from './components/pages/theme'
 import ThemeList from './components/pages/themeList'
+import ThemeBackground from './components/uiParts/themeBackground'
 import { Routes } from './domain/router'
 
 const App: FC = () => {
@@ -18,6 +19,9 @@ const App: FC = () => {
             </Route>
             <Route exact path={Routes.theme.path}>
                <Theme />
+            </Route>
+            <Route exact path={Routes.themeBackground.path}>
+               <ThemeBackground />
             </Route>
             <Route>
                <NoMatch />
