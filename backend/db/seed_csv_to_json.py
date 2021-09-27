@@ -1,3 +1,4 @@
+#D-1/backend/db行って，python seed_csv_to_json.pyで実行
 import json
 from collections import OrderedDict
 import csv
