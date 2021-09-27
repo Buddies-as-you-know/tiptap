@@ -9,7 +9,7 @@ http://127.0.0.1:5000/synonym_gen?word=[単語]
 ```
 推定不可能なワードである場合は，
 ```
-{'status': 'ng', 'response': 単語5つ}
+{'status': 'ng'}
 ```
 
 # Requirements
