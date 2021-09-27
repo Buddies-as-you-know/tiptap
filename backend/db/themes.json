@@ -1,0 +1,16 @@
+[
+  {
+    "rooms_num": "2",
+    "close_time": "1632550340",
+    "user_id": "1",
+    "name": "おたかvsほそいさん",
+    "is_closed": "false"
+  },
+  {
+    "rooms_num": "1",
+    "close_time": "1632550350",
+    "user_id": "2",
+    "name": "ジュニア",
+    "is_closed": "false"
+  }
+]
