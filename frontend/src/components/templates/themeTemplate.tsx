@@ -1,10 +1,13 @@
 import { Box, Button } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
-import SyncIcon from '@material-ui/icons/Sync';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import SyncIcon from '@material-ui/icons/Sync'
 import React, { FC, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Api } from 'src/action/action'
 
 import { PostUserTaps } from '../../domain/postUserTaps'
+import { Routes } from '../../domain/router'
 import TapButton from '../uiParts/tapButton'
 import TapsProgressBar from '../uiParts/tapsProgressBar'
 
@@ -23,20 +26,20 @@ type Props = {
          user_room_total_taps: number
          time_series?: {
             num: number
-            counts:number
+            counts: number
          }[]
          taps_ranking?: {
-            1: { 
+            1: {
                name: string
-               total_taps: number 
+               total_taps: number
             }
-            2: { 
+            2: {
                name: string
-               total_taps: number 
+               total_taps: number
             }
-            3: { 
+            3: {
                name: string
-               total_taps: number 
+               total_taps: number
             }
          }
       }[]
@@ -49,15 +52,22 @@ const useStyles = makeStyles((theme: Theme) => ({
       zIndex: 1000,
       top: '50%',
       left: '50%',
-      transform: 'translate(-50%, -50%)'
+      transform: 'translate(-50%, -50%)',
    },
    floatButton: {
-      position: "fixed",
-      right: "50px",
-      bottom: "20px",
+      position: 'fixed',
+      right: '25px',
+      bottom: '20px',
       zIndex: 200,
       ...theme.typography.button,
-   }
+   },
+   backButton: {
+      position: 'fixed',
+      left: '25px',
+      top: '20px',
+      zIndex: 200,
+      ...theme.typography.button,
+   },
 }))
 
 const maxes = [10, 30, 50, 100]
@@ -65,6 +75,8 @@ const maxes = [10, 30, 50, 100]
 // TODO 全体的なスタイル調整
 const ThemeTemplate: FC<Props> = (props) => {
    const classes = useStyles()
+   const history = useHistory()
+
    const theme = props.theme
    const [taps, setTaps] = useState<number>(0)
    const [max, setMax] = useState<number>(10)
@@ -78,18 +90,21 @@ const ThemeTemplate: FC<Props> = (props) => {
          // =========
          // taps POSTしてあげる
          //
-         const requestParams: PostUserTaps = {room_id: theme.rooms[room].id, counts: max}
+         const requestParams: PostUserTaps = {
+            room_id: theme.rooms[room].id,
+            counts: max,
+         }
          Api.postUserTaps(requestParams).then((res: any) => {
             console.log(res)
          })
          setTaps(0)
          setMax(maxes[Math.floor(Math.random() * maxes.length)])
       }
-      setProgress(taps / max * 100)
+      setProgress((taps / max) * 100)
    }
 
    const changeRoom = () => {
-      setRoom( (room + 1) % theme.rooms_num )
+      setRoom((room + 1) % theme.rooms_num)
       setTaps(0)
       setProgress(0)
       console.log(room)
@@ -98,11 +113,34 @@ const ThemeTemplate: FC<Props> = (props) => {
    return (
       <>
          <div className={classes.root}>
-            <Box mb={3}><TapButton countUp={countUp}></TapButton></Box>
-            <Box mb={3}><TapsProgressBar progress={progress} max={max}></TapsProgressBar></Box>
+            <Box mb={3}>
+               <TapButton countUp={countUp}></TapButton>
+            </Box>
+            <Box mb={3}>
+               <TapsProgressBar progress={progress} max={max}></TapsProgressBar>
+            </Box>
          </div>
          <div className={classes.floatButton}>
-            { theme.rooms_num != 1 && <Button color="secondary" size='medium' onClick={changeRoom}><SyncIcon/>陣営を変更</Button>}
+            {theme.rooms_num != 1 && (
+               <Button color="secondary" size="medium" onClick={changeRoom}>
+                  <SyncIcon />
+                  陣営を変更
+               </Button>
+            )}
+         </div>
+         <div className={classes.backButton}>
+            {theme.rooms_num != 1 && (
+               <Button
+                  color="primary"
+                  size="medium"
+                  onClick={() => {
+                     history.push(Routes.themes.path)
+                  }}
+               >
+                  <ArrowBackIosIcon />
+                  ルームリストに戻る
+               </Button>
+            )}
          </div>
       </>
    )

@@ -1,8 +1,16 @@
 import React, { FC, useEffect, useState, createContext } from 'react'
 
 import { Api } from '../../action/action'
-import { Theme } from '../../mocks/mockData'
+import {
+   Theme,
+   theme_with_single_room_closed,
+   theme_with_two_room_closed,
+   theme_with_single_room,
+   theme_with_two_room,
+} from '../../mocks/mockData'
+import RoomResultTemplate from '../templates/roomResultTemplate'
 import ThemeListTemplate from '../templates/themeListTemplate'
+import ThemeTemplate from '../templates/themeTemplate'
 
 type ContextProps = {
    themeList: any
@@ -11,14 +19,20 @@ type ContextProps = {
 
 export const ThemeListContext = createContext({} as ContextProps)
 
-const ThemeList: FC = () => {
+const Themes: FC = () => {
    const [themeList, setThemeList] = useState<any>(Theme)
+   const [theme, setTheme] = useState<any>(0)
+   // const [themeOpen, setThemeOpen] = useState<boolean>(false)
 
    const handleGetThemes = (name: string | undefined) => {
       Api.getThemes(name).then((res: any) => {
          setThemeList(res)
       })
    }
+
+   // const handleOpenCloseTheme = () => {
+   //    setThemeOpen(!themeOpen)
+   // }
 
    useEffect(() => {
       // handleGetThemes(undefined)
@@ -36,4 +50,18 @@ const ThemeList: FC = () => {
    )
 }
 
-export default ThemeList
+export default Themes
+
+//  {
+//     !themeOpen ? ( //テーマリスト表示
+//        <ThemeListTemplate />
+//     ) : (
+//        <>
+//           {theme.is_closed ? (
+//              <RoomResultTemplate theme_result={theme} />
+//           ) : (
+//              <ThemeTemplate theme={theme} />
+//           )}
+//        </>
+//     )
+//  }
