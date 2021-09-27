@@ -29,19 +29,19 @@ const TapsLineChart: FC<Props> = (props) => {
                <h1>熱狂ランキング</h1>
             </Grid>
             <Grid container>
-               <Grid xs={2}><p>1位: </p></Grid>
-               <Grid xs={6}><p>{taps_ranking[1].name}</p></Grid>
-               <Grid xs={4}><p>{taps_ranking[1].total_taps}</p></Grid>
+               <Grid item xs={2}><p>1位: </p></Grid>
+               <Grid item xs={6}><p>{taps_ranking[1].name}</p></Grid>
+               <Grid item xs={4}><p>{taps_ranking[1].total_taps}</p></Grid>
             </Grid>
             <Grid container>
-               <Grid xs={2}><p>2位: </p></Grid>
-               <Grid xs={6}><p>{taps_ranking[2].name}</p></Grid>
-               <Grid xs={4}><p>{taps_ranking[2].total_taps}</p></Grid>
+               <Grid item xs={2}><p>2位: </p></Grid>
+               <Grid item xs={6}><p>{taps_ranking[2].name}</p></Grid>
+               <Grid item xs={4}><p>{taps_ranking[2].total_taps}</p></Grid>
             </Grid>
             <Grid container>
-               <Grid xs={2}><p>3位: </p></Grid>
-               <Grid xs={6}><p>{taps_ranking[3].name}</p></Grid>
-               <Grid xs={4}><p>{taps_ranking[3].total_taps}</p></Grid>
+               <Grid item xs={2}><p>3位: </p></Grid>
+               <Grid item xs={6}><p>{taps_ranking[3].name}</p></Grid>
+               <Grid item xs={4}><p>{taps_ranking[3].total_taps}</p></Grid>
             </Grid>
          </Grid>
       </>
