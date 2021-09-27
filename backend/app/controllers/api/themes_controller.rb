@@ -1,4 +1,5 @@
 class Api::ThemesController < ApplicationController
+  before_action :authenticate_api_user!
   def index
     @themes = Theme.all
     @themes = @themes.where('name like ?', "%#{params[:name]}%") if params[:name]
@@ -21,6 +22,6 @@ class Api::ThemesController < ApplicationController
   private
 
   def theme_params
-    params.permit(:user_id, :name, :rooms_num, :close_time)
+    params.permit(:name, :rooms_num, :close_time).merge(user_id: current_api_user.id)
   end
 end
