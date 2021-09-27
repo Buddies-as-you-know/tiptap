@@ -1,5 +1,6 @@
 export {}
 import moment from 'moment'
+import { ThemeList } from 'src/domain/themes'
 
 export const users = {
    id: 0,
@@ -10,7 +11,7 @@ export const users = {
    updated_at: moment('2021-09-22T09:30:00').unix(),
 }
 
-export const themes = {
+export const themes: ThemeList = {
    searched_themes: [
       {
          id: 0,

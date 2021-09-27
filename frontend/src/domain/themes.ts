@@ -6,3 +6,7 @@ export type SearchedThemes = {
    close_time: number
    is_closed: boolean
 }
+
+export type ThemeList = {
+   searched_themes: SearchedThemes[]
+}
