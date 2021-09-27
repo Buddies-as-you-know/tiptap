@@ -9,7 +9,7 @@ json = {
       id: r.id,
       name: r.name,
       total_counts: r.counts,
-      user_room_total_taps: @user_room_total_taps,
+      user_room_total_taps: r.user_room_total_taps,
     }
   }
 }
