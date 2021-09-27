@@ -5,7 +5,8 @@ ActiveRecord::Base.transaction do
     User.create!(
       name: row[0],
       email: row[1],
-      counts: row[2],
+      password: row[2],
+      counts: row[3],
     )
   end
   CSV.foreach('db/themes.csv') do |row|
