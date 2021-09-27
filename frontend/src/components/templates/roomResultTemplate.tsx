@@ -7,6 +7,8 @@ import React, { FC, useState } from 'react'
 import EnthusiastsRanking from '../uiParts/enthusiastsRanking'
 import TapsLineChart from '../uiParts/tapsLineChart'
 
+
+
 type Props = {
    theme_result: {
       name: string
@@ -72,7 +74,7 @@ const RoomTemplate: FC<Props> = (props) => {
                <h1>{theme_result.name}</h1>
             </Grid>
             <Grid item>
-               <h1>累計タップ数: {theme_result.rooms[room].total_counts}</h1>
+               <h1>累計タップ: {theme_result.rooms[room].total_counts}</h1>
             </Grid>
             <Grid item xs={12} sm={6} style={{ width: '100%' }}>
                <TapsLineChart started_at={theme_result.created_at} closed_at={theme_result.close_time} time_series={theme_result.rooms[room].time_series}/>
@@ -84,6 +86,7 @@ const RoomTemplate: FC<Props> = (props) => {
          <div className={classes.floatButton}>
             { theme_result.rooms_num != 1 && <Button color="secondary" size='medium' onClick={changeRoom}><SyncIcon/>陣営を変更</Button>}
          </div>
+         
       </>
    )
 }
