@@ -1,13 +1,6 @@
-import { styled } from '@material-ui/core'
-import React, { FC } from 'react'
-
-// TODO 全体的なスタイル調整
-// const LandingTemplate: FC = () => {
-//    return <div>Landing Page</div>
-// }
-// export default LandingTemplate
 import { makeStyles, Theme } from '@material-ui/core/styles'
-import Icon from './TipTap_logo_2.png'
+import React, { FC } from 'react'
+import TipTapLogo from 'src/images/TipTap_logo.png'
 
 const useStyles = makeStyles((theme: Theme) => ({
    icon: {
@@ -26,7 +19,11 @@ const LandingTemplate: FC = () => {
       <>
          <div>Landing Page</div>
          <div className={classes.icon}>
-            <img src={Icon} alt="アイコン" className={classes.imageStyle} />
+            <img
+               src={TipTapLogo}
+               alt="アイコン"
+               className={classes.imageStyle}
+            />
          </div>
       </>
    )

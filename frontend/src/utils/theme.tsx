@@ -1,18 +1,6 @@
-type Theme = {
-   color: {
-      primaryColor: string
-      secondaryColor: string
-      greyColor: string
-   }
-   font: {
-      fontFamily: string
-   }
-   background: {
-      primaryColor: string
-   }
-}
+import { Themes } from '../domain/theme'
 
-const Theme: Theme = {
+const Theme: Themes = {
    color: {
       primaryColor: '#094067',
       secondaryColor: '#ef4565',

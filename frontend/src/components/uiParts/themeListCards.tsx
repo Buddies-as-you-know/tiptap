@@ -5,14 +5,14 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { id } from 'date-fns/esm/locale'
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 
-import { SearchedThemes } from '../../domain/themes'
-import { themes } from '../../mocks/mockData'
+import { SearchedThemes } from '../../domain/postThemes'
+import { ThemeListContext } from '../pages/themeList'
 
 const useStyles = makeStyles({
    root: {
-      minWidth: 275,
+      minWidth: 345,
       width: '70%',
       margin: '4px',
    },
@@ -27,11 +27,13 @@ const useStyles = makeStyles({
 })
 
 const ThemeListCards: FC = (props) => {
+   const { themeList } = useContext(ThemeListContext)
+   console.log(themeList)
    const classes = useStyles()
 
    return (
       <>
-         {themes.searched_themes.map((value: SearchedThemes) => {
+         {themeList.searched_themes.map((value: SearchedThemes) => {
             return (
                <Card className={classes.root} key={value.id}>
                   <CardContent>
