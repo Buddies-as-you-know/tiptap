@@ -1,4 +1,4 @@
-import { Grid, IconButton } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import SyncIcon from '@material-ui/icons/Sync';
 import React, { FC, useState } from 'react'
@@ -68,7 +68,7 @@ const RoomTemplate: FC<Props> = (props) => {
    return (
       <>
          <Grid container direction="column" justifyContent="center" alignItems="center">
-            <Grid item>結果</Grid>
+            <Box pt={3}><Grid item>結果</Grid></Box>
             <Grid item>
                <h1>{theme_result.name}</h1>
             </Grid>
@@ -83,7 +83,7 @@ const RoomTemplate: FC<Props> = (props) => {
             </Grid>
          </Grid>
          <div className={classes.floatButton}>
-            { theme_result.rooms_num != 1 && <IconButton size='medium' onClick={changeRoom}><SyncIcon/>陣営を変更</IconButton>}
+            { theme_result.rooms_num != 1 && <Button color="secondary" size='medium' onClick={changeRoom}><SyncIcon/>陣営を変更</Button>}
          </div>
       </>
    )
