@@ -11,10 +11,12 @@ docker-compose run --rm frontend npm install
 ./frontend
 
 # backend
-
+How to start
 ```
 docker-compose run backend rails db:migrate
 docker-compose run backend rails db:seed
 docker-compose up
 ```
+
+if you update gem
 ./backend
