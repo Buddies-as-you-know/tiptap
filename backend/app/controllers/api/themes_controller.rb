@@ -1,5 +1,5 @@
 class Api::ThemesController < ApplicationController
-  before_action :authenticate_api_user! only: [:create]
+  before_action :authenticate_api_user!, only: [:create]
   def index
     @themes = Theme.all
     @themes = @themes.where('name like ?', "%#{params[:name]}%") if params[:name]
