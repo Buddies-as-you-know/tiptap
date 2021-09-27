@@ -1,10 +1,9 @@
 class Api::UsersController < ApplicationController
-  def create
-  end
+  before_action :authenticate_api_user!
 
-  def show
-    @user = User.find_by(params[:id])
+  def myinfo
+    @user = current_api_user
 
-    render "api/user/show.json.jb"
+    render "api/user/myinfo.json.jb"
   end
 end
