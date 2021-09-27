@@ -3,17 +3,16 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 
 type Props = {
-   users_taps: {
-      user_id: number
+   time_series: {
+      num: number
       counts: number
-      created_at: number
    }[]
    started_at: number
    closed_at: number
 }
 
 const TapsLineChart: FC<Props> = (props) => {
-   const { users_taps } = props
+   const { time_series } = props
 
    // 時間正規化ロジック
    // const time_span = (closed_at - started_at) / 10
@@ -31,7 +30,7 @@ const TapsLineChart: FC<Props> = (props) => {
                <LineChart
                   width={500}
                   height={300}
-                  data={users_taps}
+                  data={time_series}
                   margin={{
                      top: 5,
                      right: 30,

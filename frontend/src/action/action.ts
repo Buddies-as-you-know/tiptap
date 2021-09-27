@@ -1,6 +1,8 @@
 import axios, { AxiosError } from 'axios'
 import { PostTheme } from 'src/domain/postThemes'
 
+import { PostUserTaps } from '../domain/postUserTaps'
+
 //サーバー接続の切り替え
 let domain: string
 switch (window.location.host) {
@@ -12,6 +14,14 @@ switch (window.location.host) {
       break
    default:
       domain = ''
+}
+
+const headers = {
+   headers: {
+      client: 'SVw5fDxYha8h23nSs0srKw',
+      uid: 'test@example.com',
+      'access-token': 'JhQx8e8LM0pIiTy21x9Ljw',
+   },
 }
 
 const errorHandler = (error: AxiosError) => {
@@ -59,6 +69,16 @@ export const Api = {
    postThemes: (postThemeData: PostTheme): Promise<Error> => {
       return axios
          .post(`${domain}/api/themes`, postThemeData)
+         .then((response) => {
+            return response.data
+         })
+         .catch((error) => {
+            errorHandler(error)
+         })
+   },
+   postUserTaps: (postUserTaps: PostUserTaps): Promise<Error> => {
+      return axios
+         .post(`${domain}/api/user_taps`, postUserTaps, headers)
          .then((response) => {
             return response.data
          })
