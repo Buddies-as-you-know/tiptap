@@ -1,1 +1,9 @@
-[{"theme_id": "1", "name": "おたか"}, {"theme_id": "2", "name": "ほそいさん"}, {"theme_id": "3", "name": "junior"}, {"theme_id": "4", "name": "阪神vs巨人"}, {"theme_id": "5", "name": "夏の陣"}, {"theme_id": "6", "name": "きのこvsたけのこ"}, {"theme_id": "7", "name": "ゴジラvsシンゴジラ"}]
+[
+  { "theme_id": "1", "name": "おたか" },
+  { "theme_id": "2", "name": "ほそいさん" },
+  { "theme_id": "3", "name": "junior" },
+  { "theme_id": "4", "name": "阪神vs巨人" },
+  { "theme_id": "5", "name": "夏の陣" },
+  { "theme_id": "6", "name": "きのこvsたけのこ" },
+  { "theme_id": "7", "name": "ゴジラvsシンゴジラ" }
+]
