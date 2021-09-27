@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.create({name: "otaka", email: "otaka@fuga.com", counts: 0})
+User.create({name: "hosoisan", email: "hosoisan@fuga.com", counts: 0})
+User.create({name: "junior", email: "junior@fuga.com", counts: 0})
+Theme.create({ user_id: 1, name: 'おたかvsほそいさん', rooms_num: 2, close_time: 1632550340, is_closed: false})
+Theme.create({ user_id: 2, name: 'ジュニア', rooms_num: 1, close_time: 1632550350, is_closed: false})
+Room.create({theme_id: 1, name:"おたか"})
+Room.create({theme_id: 1, name:"ほそいさん"})
+Room.create({theme_id: 2, name:"junior"})
+UserTap.create({user_id: 3, room_id:1, counts: 10})
+UserTap.create({user_id: 3, room_id:1, counts: 15})
+UserTap.create({user_id: 3, room_id:2, counts: 10})
+UserTap.create({user_id: 3, room_id:2, counts: 10})
+UserTap.create({user_id: 3, room_id:2, counts: 10})
+UserTap.create({user_id: 1, room_id:3, counts: 25})

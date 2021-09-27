@@ -1,0 +1,8 @@
+json = {
+  id: @theme.id,
+  rooms: @rooms.map { |r| {
+    id: r.id
+    }
+  }
+}
+json

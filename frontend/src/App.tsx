@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Landing from './components/pages/landing'
-import Room from './components/pages/room'
-import RoomList from './components/pages/roomList'
+import Theme from './components/pages/theme'
+import ThemeList from './components/pages/themeList'
 import { Routes } from './domain/router'
 
 const App: FC = () => {
@@ -13,11 +13,11 @@ const App: FC = () => {
             <Route exact path={Routes.landing.path}>
                <Landing />
             </Route>
-            <Route exact path={Routes.roomList.path}>
-               <RoomList />
+            <Route exact path={Routes.themeList.path}>
+               <ThemeList />
             </Route>
-            <Route exact path={Routes.room.path}>
-               <Room />
+            <Route exact path={Routes.theme.path}>
+               <Theme />
             </Route>
             <Route>
                <NoMatch />
