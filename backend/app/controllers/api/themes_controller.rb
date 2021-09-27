@@ -3,7 +3,7 @@ class Api::ThemesController < ApplicationController
     sorted_theme_ids = Room.order('sum_counts desc').group(:theme_id).sum(:counts).keys
     @themes = Theme.find(sorted_theme_ids)
     @themes = @themes.select { |t| t.name.include? params[:name] } if params[:name]
-    @themes = @themes[0, 100]
+    @themes = @themes[0, 99]
 
     render "api/theme/index.json.jb"
   end
