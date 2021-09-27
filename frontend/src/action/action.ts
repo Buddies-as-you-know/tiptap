@@ -1,9 +1,10 @@
 import axios, { AxiosError } from 'axios'
+import { PostTheme } from 'src/domain/postThemes'
 
 //サーバー接続の切り替え
 let domain: string
 switch (window.location.host) {
-   case 'http://localhost:3000':
+   case 'localhost:3000':
       domain = 'http://localhost:8080'
       break
    case '': //本番
@@ -48,6 +49,16 @@ export const Api = {
          : `${domain}/api/themes`
       return axios
          .get(api)
+         .then((response) => {
+            return response.data
+         })
+         .catch((error) => {
+            errorHandler(error)
+         })
+   },
+   postThemes: (postThemeData: PostTheme): Promise<Error> => {
+      return axios
+         .post(`${domain}/api/themes`, postThemeData)
          .then((response) => {
             return response.data
          })

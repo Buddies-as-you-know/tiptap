@@ -1,6 +1,6 @@
 export {}
 import moment from 'moment'
-import { ThemeList } from 'src/domain/themes'
+import { ThemeList } from 'src/domain/postThemes'
 
 export const users = {
    id: 0,
@@ -31,6 +31,75 @@ export const themes: ThemeList = {
       },
       {
          id: 2,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 3,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+   ],
+}
+
+export const Theme: ThemeList = {
+   searched_themes: [
+      {
+         id: 0,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 1,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 2,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 3,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 3,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 3,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 3,
          user_id: 0,
          name: '阪神vs巨人',
          rooms_num: 0,

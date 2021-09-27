@@ -10,3 +10,14 @@ export type SearchedThemes = {
 export type ThemeList = {
    searched_themes: SearchedThemes[]
 }
+
+export type Rooms = {
+   name: string
+}
+
+export type PostTheme = {
+   name: string
+   rooms_num: number
+   duration: number
+   rooms: Rooms[]
+}
