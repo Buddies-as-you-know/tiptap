@@ -20,6 +20,6 @@ docker-compose up
 
 if you update some gems
 ```
-docker-compose run --rm backend bundle instal
+docker-compose run --rm backend bundle install
 ```
 ./backend
