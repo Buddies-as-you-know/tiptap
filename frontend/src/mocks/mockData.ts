@@ -6,8 +6,45 @@ export const users = {
    name: 'asahara',
    email: 'test@gmail.com',
    hogehoge_id: '000',
-   created_at: String(moment('2021-09-22T09:30:00').unix()),
-   updated_at: String(moment('2021-09-22T09:30:00').unix()),
+   created_at: moment('2021-09-22T09:30:00').unix(),
+   updated_at: moment('2021-09-22T09:30:00').unix(),
+}
+
+export const themes = {
+   searched_themes: [
+      {
+         id: 0,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 1,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 2,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+      {
+         id: 3,
+         user_id: 0,
+         name: '阪神vs巨人',
+         rooms_num: 0,
+         close_time: moment('2021-09-22T09:30:00').unix(),
+         is_closed: true,
+      },
+   ],
 }
 
 // Table "users" {

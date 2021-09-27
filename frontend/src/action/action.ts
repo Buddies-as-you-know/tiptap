@@ -1,10 +1,12 @@
+import { StringifyOptions } from 'querystring'
+
 import axios, { AxiosError } from 'axios'
 
 //サーバー接続の切り替え
 let api: string
 switch (window.location.host) {
    case 'http://localhost:3000':
-      api = 'http://localhost:5000'
+      api = 'http://localhost:8080'
       break
    case '': //本番
       api = ''
@@ -42,9 +44,9 @@ const errorHandler = (error: AxiosError) => {
 }
 
 export const Api = {
-   test: async (): Promise<Error> => {
-      return await axios
-         .post(`${api}/test`)
+   getTemes: (name: string | undefined): Promise<Error> => {
+      return axios
+         .get(`${api}/getTemes?name=${name}`)
          .then((response) => {
             return response.data
          })
