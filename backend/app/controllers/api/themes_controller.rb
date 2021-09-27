@@ -14,8 +14,8 @@ class Api::ThemesController < ApplicationController
     @rooms = @theme.rooms
     @rooms.each do |room|
       #user_room_total_tapsはroom attr_accessorに持たせたい
-      @user_room_total_taps = UserTap.where(user_id: 1, room_id: 1).sum(:counts)
-      # room.user_room_total_taps = UserTap.find_by(user_id: current_api_user.id, room_id: room.id).sum(:counts)
+      # @user_room_total_taps = UserTap.where(user_id: 1, room_id: 1).sum(:counts)
+      room.user_room_total_taps = UserTap.where(user_id: 1, room_id: 1).sum(:counts)
     end
     # if Time.now < @theme.close_time
     #   @rooms = @theme.rooms
