@@ -5,7 +5,6 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import moment from 'moment'
 import React, { FC, useState } from 'react'
 import { Api } from 'src/action/action'
 import { sendSuccess, sendError } from 'src/alert/swalAlertContent'
@@ -17,7 +16,7 @@ import Themes from '../../utils/theme'
 
 import ThemeForm from './themeForm'
 
-const useStyles = makeStyles<Theme>((theme) => ({
+const useStyles = makeStyles<Theme>(() => ({
    font: {
       fontFamily: Themes.font.fontFamily,
    },

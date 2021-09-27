@@ -6,8 +6,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "./frontend:/myapp"
-    command: /bin/sh -c "cd /myapp && npm start"
+      - './frontend:/myapp'
+    working_dir: /myapp
+    command: /bin/sh -c "npm start"
     tty: true
     stdin_open: true
 

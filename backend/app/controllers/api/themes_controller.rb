@@ -1,7 +1,10 @@
 class Api::ThemesController < ApplicationController
+  before_action :authenticate_api_user!, only: [:create]
   def index
-    @themes = Theme.all
-    @themes = @themes.where('name like ?', "%#{params[:name]}%") if params[:name]
+    sorted_theme_ids = Room.order('sum_counts desc').group(:theme_id).sum(:counts).keys
+    @themes = Theme.find(sorted_theme_ids)
+    @themes = @themes.select { |t| t.name.include? params[:name] } if params[:name]
+    @themes = @themes[0, 99]
 
     render "api/theme/index.json.jb"
   end
@@ -10,7 +13,8 @@ class Api::ThemesController < ApplicationController
   end
 
   def create
-    @theme = Theme.create(theme_params)
+    @theme = Theme.create(theme_params.except(:duration))
+    @theme.update(close_time: @theme.created_at.to_i + params[:duration].to_i)
     params[:rooms].each do |room_param|
       Room.create({theme_id: @theme.id, name: room_param[:name]})
     end
@@ -21,6 +25,6 @@ class Api::ThemesController < ApplicationController
   private
 
   def theme_params
-    params.permit(:user_id, :name, :rooms_num, :close_time)
+    params.permit(:name, :rooms_num,:duration).merge(user_id: current_api_user.id)
   end
 end
