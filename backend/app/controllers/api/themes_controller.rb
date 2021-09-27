@@ -11,10 +11,10 @@ class Api::ThemesController < ApplicationController
 
   def create
     @theme = Theme.create(theme_params)
-    @rooms = []
     params[:rooms].each do |room_param|
-      @rooms.push(Room.create({theme_id: @theme.id, name: room_param[:name]}))
+      Room.create({theme_id: @theme.id, name: room_param[:name]})
     end
+    @rooms = @theme.rooms
     render "api/theme/create.json.jb"
   end
 
