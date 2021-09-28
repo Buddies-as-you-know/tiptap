@@ -10,8 +10,7 @@ json = {
       name: r.name,
       total_counts: r.counts,
       user_room_total_taps: r.user_room_total_taps,
-      enthusiastic_close_time: r.enthusiastic_close_time,
-      tap_speed: @tap_speeds[i]
+      enthusiastic_close_time: r.enthusiastic_close_time
     }
   }
 }
