@@ -72,7 +72,7 @@ const ThemeForm: FC<Props> = (props) => {
       }
    }
 
-   console.log(postThemeData)
+   // console.log(postThemeData)
    return (
       <div>
          <TextField

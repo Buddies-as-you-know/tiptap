@@ -13,12 +13,12 @@ const Theme: FC = () => {
       const headers = JSON.parse(
          localStorage.getItem('headerUserInfo') as string
       )
-      console.log(theme)
+      //console.log(theme)
       // if (!theme.is_closed) {
       setInterval(() => {
-         console.log('フェッチ')
+         //console.log('フェッチ')
          Api.getTheme(id, headers).then((res: any) => {
-            console.log(res)
+           // console.log(res)
             setTheme(res)
          })
          // const headers = JSON.parse(
@@ -37,7 +37,7 @@ const Theme: FC = () => {
       // }
    }, [])
 
-   console.log({ theme })
+   //console.log({ theme })
 
    return (
       <>

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Landing from './components/pages/landing'
 import Theme from './components/pages/theme'
