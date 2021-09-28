@@ -1,0 +1,23 @@
+json = {
+  name: string
+  rooms_num: int
+  close_time: int
+  is_closed: boolean
+  user_id: int
+  created_at: int
+  rooms: [
+    {
+      id: int
+      name: string
+      total_counts: int
+      user_room_total_taps: int
+      taps_ranking: {
+          1: { name: string, total_taps: int },
+          2: { name: string, total_taps: int },
+          3: { name: string, total_taps: int }
+      }
+      time_series: [{0,150},{1,200},...,{num,counts},...,{99,400}]
+    }
+  ]
+}
+json
