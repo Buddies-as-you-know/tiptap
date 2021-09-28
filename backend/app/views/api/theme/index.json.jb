@@ -5,6 +5,8 @@ json = {
     name: t.name,
     rooms_num: t.rooms_num,
     close_time: t.close_time,
+    duration: t.duration,
+    total_counts: t.counts,
     is_closed: t.is_closed
     }
   }

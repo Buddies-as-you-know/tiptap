@@ -5,7 +5,10 @@ class Api::ThemesController < ApplicationController
     @themes = Theme.find(sorted_theme_ids)
     @themes = @themes.select { |t| t.name.include? params[:name] } if params[:name]
     @themes = @themes[0, 99]
-
+    @themes.each do |theme|
+      theme.duration = theme.close_time - theme.created_at
+      theme.counts = theme.rooms.sum(:counts)
+    end
     render "api/theme/index.json.jb"
   end
 
@@ -23,19 +26,19 @@ class Api::ThemesController < ApplicationController
       render "api/theme/show_theme_open.json.jb"
     else
       #@userとして@themeにuser_tapsを持ってるuserを抜き出して，sum(:counts)を計算してランキング返したい
-      user_ids = UserTap.where('room_id IN (?)', room_ids).distinct.pluck(:user_id)
-      @users = User.order('counts DESC')
-      @users = @users.where('id IN (?)', user_ids)
+      @users = @rooms.map do |r|
+        user_ids = UserTap.where('room_id like ?', r.id).distinct.pluck(:user_id)
+        users = User.order('counts DESC')
+        users = users.where('id IN (?)', user_ids)
+      end
 
-      # time_series
-      start = @theme.created_at.to_i
-      stop = @theme.close_time
-      step = ((stop - start) / 100).to_i
-
-      @time_series = (start + step).step(by: step, to: stop).map { |t| UserTap.where(created_at: Time.at(t - step)..Time.at(t)) }
-      #今できてるのは，時間ごとに区切ってthemeに属してるUserTapを持ってきてる
-
-      @time_series.map.with_index(1) { |ts, idx| { num: idx, counts: ts.sum(:counts) } }
+      @time_series = @rooms.map do |r|
+        start = @theme.created_at.to_i
+        stop = @theme.close_time
+        step = ((stop - start) / 100).to_i
+        time_series = (start + step).step(by: step, to: stop).map { |t| UserTap.where(room_id: r.id, created_at: Time.at(t - step)..Time.at(t)) }
+        time_series = time_series.map.with_index(1) { |ts, idx| { num: idx, counts: ts.sum(:counts) } }
+      end
 
       render "api/theme/show_theme_close.json.jb"
     end
