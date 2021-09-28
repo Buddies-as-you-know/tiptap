@@ -74,14 +74,14 @@ const useStyles = makeStyles((theme: Theme) => ({
       position: 'fixed',
       left: '25px',
       top: '20px',
-      zIndex: 200,
+      zIndex: 10000,
       backgroundColor: '#ffffff',
       borderRadius: '5px',
       ...theme.typography.button,
    },
 }))
 
-const maxes = [10, 30, 50, 100]
+const max = 30
 
 // TODO 全体的なスタイル調整
 const ThemeTemplate: FC<Props> = (props) => {
@@ -90,7 +90,6 @@ const ThemeTemplate: FC<Props> = (props) => {
 
    const theme = props.theme
    const [taps, setTaps] = useState<number>(0)
-   const [max, setMax] = useState<number>(10)
    const [progress, setProgress] = useState<number>(0)
    const [room, setRoom] = useState<number>(0)
    // depthを相対的にする必要あり。
@@ -114,7 +113,6 @@ const ThemeTemplate: FC<Props> = (props) => {
          // 後で処理を５秒Fetchに移動させる。
          // setDepth(depth + max)
          setTaps(0)
-         setMax(maxes[Math.floor(Math.random() * maxes.length)])
          setProgress(0)
       } else {
          setProgress((prev) => prev + (1 / max) * 100)
@@ -170,7 +168,7 @@ const ThemeTemplate: FC<Props> = (props) => {
                </Typography>
             </div>
             <div className={classes.floatButton}>
-               {theme.rooms_num != 1 && (
+               {theme.rooms_num > 1 && (
                   <Button
                      size="medium"
                      onClick={changeRoom}
@@ -193,18 +191,16 @@ const ThemeTemplate: FC<Props> = (props) => {
             </Ocean>
          </div>
          <div className={classes.backButton}>
-            {theme.rooms_num != 1 && (
-               <Button
-                  color="primary"
-                  size="medium"
-                  onClick={() => {
-                     history.push(Routes.themes.path)
-                  }}
-               >
-                  <ArrowBackIosIcon />
-                  ルームリストに戻る
-               </Button>
-            )}
+            <Button
+               color="primary"
+               size="medium"
+               onClick={() => {
+                  history.push(Routes.themes.path)
+               }}
+            >
+               <ArrowBackIosIcon />
+               ルームリストに戻る
+            </Button>
          </div>
       </div>
    )
