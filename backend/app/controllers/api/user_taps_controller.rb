@@ -6,6 +6,7 @@ class Api::UserTapsController < ApplicationController
     room = Room.find(params[:room_id])
     counts = params[:counts].to_i
     room.update(counts: room.counts + counts)
+    current_api_user.update(counts: current_api_user.counts + counts)
   end
 
   private
