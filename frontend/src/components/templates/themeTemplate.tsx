@@ -9,6 +9,7 @@ import styled from 'styled-components'
 
 import { PostUserTaps } from '../../domain/postUserTaps'
 import { Routes } from '../../domain/router'
+import { TimeCalService } from '../../services/timeCalService'
 import TapButton from '../uiParts/tapButton'
 import TapsProgressBar from '../uiParts/tapsProgressBar'
 
@@ -25,6 +26,7 @@ type Props = {
          name: string
          total_counts: number
          user_room_total_taps: number
+         enthusiastic_close_time: number
          time_series?: {
             num: number
             counts: number
@@ -107,11 +109,16 @@ const ThemeTemplate: FC<Props> = (props) => {
       setProgress((taps / max) * 100)
    }
 
+   const timeCalService = new TimeCalService()
+
    const changeRoom = () => {
       setRoom((room + 1) % theme.rooms_num)
       setTaps(0)
       setProgress(0)
       console.log(room)
+      console.log(
+         timeCalService.IsPassed(theme.rooms[room].enthusiastic_close_time)
+      )
    }
 
    return (
