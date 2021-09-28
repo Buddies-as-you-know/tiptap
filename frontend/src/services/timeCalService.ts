@@ -7,6 +7,7 @@ export class TimeCalService {
       return result
    }
    //残り時間(unixtime)をリターン
+   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
    public DisplayLeaveTime(unixTime: number) {
       const object = {
          isClose: false,
@@ -27,7 +28,7 @@ export class TimeCalService {
       }
       return object
    }
-  //時間が過ぎたかどうか(unixtime)をリターン
+   //時間が過ぎたかどうか(unixtime)をリターン
    public IsPassed(closeTime: number): boolean {
       const result = closeTime - moment().unix()
       if (result > 0) {

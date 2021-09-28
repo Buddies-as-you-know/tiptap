@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/static/css/main.cdbfc8ea.chunk.css",
-    "main.js": "/static/js/main.9c5f0be1.chunk.js",
-    "main.js.map": "/static/js/main.9c5f0be1.chunk.js.map",
+    "main.js": "/static/js/main.beed4afc.chunk.js",
+    "main.js.map": "/static/js/main.beed4afc.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.2464c3ba.js",
     "runtime-main.js.map": "/static/js/runtime-main.2464c3ba.js.map",
-    "static/js/2.450a9040.chunk.js": "/static/js/2.450a9040.chunk.js",
-    "static/js/2.450a9040.chunk.js.map": "/static/js/2.450a9040.chunk.js.map",
+    "static/js/2.488462d4.chunk.js": "/static/js/2.488462d4.chunk.js",
+    "static/js/2.488462d4.chunk.js.map": "/static/js/2.488462d4.chunk.js.map",
     "static/js/3.aa42abdf.chunk.js": "/static/js/3.aa42abdf.chunk.js",
     "static/js/3.aa42abdf.chunk.js.map": "/static/js/3.aa42abdf.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.cdbfc8ea.chunk.css.map": "/static/css/main.cdbfc8ea.chunk.css.map",
-    "static/js/2.450a9040.chunk.js.LICENSE.txt": "/static/js/2.450a9040.chunk.js.LICENSE.txt",
+    "static/js/2.488462d4.chunk.js.LICENSE.txt": "/static/js/2.488462d4.chunk.js.LICENSE.txt",
     "static/media/TipTap_logo.7ea7696f.png": "/static/media/TipTap_logo.7ea7696f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.2464c3ba.js",
-    "static/js/2.450a9040.chunk.js",
+    "static/js/2.488462d4.chunk.js",
     "static/css/main.cdbfc8ea.chunk.css",
-    "static/js/main.9c5f0be1.chunk.js"
+    "static/js/main.beed4afc.chunk.js"
   ]
 }
