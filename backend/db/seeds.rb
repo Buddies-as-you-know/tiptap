@@ -10,7 +10,7 @@ ActiveRecord::Base.transaction do
     )
   end
   CSV.foreach('db/themes.csv') do |row|
-    theme = Theme.create!(
+    theme = Theme.new!(
       user_id: row[0],
       name: row[1],
       rooms_num: row[2],
@@ -18,19 +18,26 @@ ActiveRecord::Base.transaction do
       is_closed: row[4],
       created_at: Time.new(2021, 9, 28, 1, 0, 0, '+00:00')
     )
+    User.find_or_create_by(id: row[0]).themes << theme
+    theme.save!
   end
   CSV.foreach('db/rooms.csv') do |row|
-    Room.create!(
+    room = Room.new!(
       theme_id: row[0],
       name: row[1],
     )
+    Theme.find_or_create_by(id: row[0]).rooms << room_id
+    room.save
   end
   CSV.foreach('db/user_taps.csv') do |row|
-   user_tap = UserTap.create!(
+   user_tap = UserTap.new!(
       user_id: row[0],
       room_id: row[1],
       counts: row[2],
       created_at: Time.new(2021, 9, 28, 1, 0, 0, '+00:00')+ SecureRandom.random_number(1*60*60),
     )
+    User.find_or_create_by(id: row[0]).user_tap << user_tap
+    Room.find_or_create_by(id: row[1]).user_tap << user_tap
+    user_tap.save
   end
 end
