@@ -28,9 +28,9 @@ class Api::ThemesController < ApplicationController
     else
       #@userとして@themeにuser_tapsを持ってるuserを抜き出して，sum(:counts)を計算してランキング返したい
       @users = @rooms.map do |r|
-        user_ids = UserTap.where('room_id like ?', r.id).distinct.pluck(:user_id)
+        user_ids = UserTap.where(room_id: r.id).distinct.pluck(:user_id)
         users = User.order('counts DESC')
-        users = users.where('id IN (?)', user_ids)
+        users = users.where(user_id: user_ids)
       end
 
       @time_series = @rooms.map do |r|
