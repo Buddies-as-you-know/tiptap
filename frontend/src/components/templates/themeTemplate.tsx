@@ -92,7 +92,7 @@ const ThemeTemplate: FC<Props> = (props) => {
    const [progress, setProgress] = useState<number>(0)
    const [room, setRoom] = useState<number>(0)
    // depthを相対的にする必要あり。
-   const [depth, setDepth] = useState<number>(400)
+   const [depth, setDepth] = useState<number>(200)
 
    const countUp = () => {
       setTaps((prev) => prev + 1)
@@ -107,7 +107,7 @@ const ThemeTemplate: FC<Props> = (props) => {
             console.log(res)
          })
          // 後で処理を５秒Fetchに移動させる。
-         setDepth(depth + max)
+         // setDepth(depth + max)
          setTaps(0)
          setMax(maxes[Math.floor(Math.random() * maxes.length)])
          setProgress(0)
