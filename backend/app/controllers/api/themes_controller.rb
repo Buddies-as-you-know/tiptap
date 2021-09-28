@@ -30,7 +30,7 @@ class Api::ThemesController < ApplicationController
       @users = @rooms.map do |r|
         user_ids = UserTap.where(room_id: r.id).distinct.pluck(:user_id)
         users = User.order('counts DESC')
-        users = users.where(user_id: user_ids)
+        users = users.find(user_ids)
       end
 
       @time_series = @rooms.map do |r|
