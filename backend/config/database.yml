@@ -54,3 +54,4 @@ production:
   username: backend
   adapter: postgresql
   password: password
+  encoding: unicode
