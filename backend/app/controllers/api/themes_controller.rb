@@ -12,12 +12,33 @@ class Api::ThemesController < ApplicationController
   def show
     @theme = Theme.find(params[:id])
     @rooms = @theme.rooms
+    room_ids = []
     @rooms.each do |room|
       room.user_room_total_taps = UserTap.where(user_id: current_api_user, room_id: room.id).sum(:counts)
+      room_ids.push(room.id)
     end
+
     # todo: themeのclose時とopen時で処理の切り分け
-    # if Time.now < @theme.close_time
-    render "api/theme/show.json.jb"
+    if Time.current.to_i <= @theme.close_time
+      render "api/theme/show_theme_open.json.jb"
+    else
+      #@userとして@themeにuser_tapsを持ってるuserを抜き出して，sum(:counts)を計算してランキング返したい
+      user_ids = UserTap.where('room_id IN (?)', room_ids).distinct.pluck(:user_id)
+      @users = User.order('counts DESC')
+      @users = @users.where('id IN (?)', user_ids)
+
+      # time_series
+      start = @theme.created_at.to_i
+      stop = @theme.close_time
+      step = ((stop - start) / 100).to_i
+
+      @time_series = (start + step).step(by: step, to: stop).map { |t| UserTap.where(created_at: Time.at(t - step)..Time.at(t)) }
+      #今できてるのは，時間ごとに区切ってthemeに属してるUserTapを持ってきてる
+
+      @time_series.map.with_index(1) { |ts, idx| { num: idx, counts: ts.sum(:counts) } }
+
+      render "api/theme/show_theme_close.json.jb"
+    end
   end
 
   def create
