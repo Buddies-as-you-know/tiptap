@@ -5,26 +5,17 @@ import { isNullishCoalesce } from 'typescript'
 import { PostUserTaps } from '../domain/postUserTaps'
 import { UserInfo, LoginInfo } from '../domain/userInfo'
 
-
 //サーバー接続の切り替え
 let domain: string
 switch (window.location.host) {
    case 'localhost:3000':
-      domain = 'http://localhost:8080'
+      domain = 'https://d1-tiptap.herokuapp.com'
       break
    case '': //本番
       domain = ''
       break
    default:
-      domain = ''
-}
-
-const headers = {
-   headers: {
-      client: 'SVw5fDxYha8h23nSs0srKw',
-      uid: 'test@example.com',
-      'access-token': 'JhQx8e8LM0pIiTy21x9Ljw',
-   },
+      domain = 'https://d1-tiptap.herokuapp.com'
 }
 
 const errorHandler = (error: AxiosError) => {
@@ -56,12 +47,15 @@ const errorHandler = (error: AxiosError) => {
 }
 
 export const Api = {
-   getThemes: (name: string | undefined): Promise<Error> => {
+   getThemes: (name: string | undefined, headers: any): Promise<Error> => {
+      const requestConfig = {
+         headers,
+      }
       const api = name
          ? `${domain}/api/themes?name=${name}`
          : `${domain}/api/themes`
       return axios
-         .get(api)
+         .get(api, requestConfig)
          .then((response) => {
             return response.data
          })
@@ -69,9 +63,12 @@ export const Api = {
             errorHandler(error)
          })
    },
-   postThemes: (postThemeData: PostTheme): Promise<Error> => {
+   postThemes: (postThemeData: PostTheme, headers: any): Promise<Error> => {
+      const requestConfig = {
+         headers,
+      }
       return axios
-         .post(`${domain}/api/themes`, postThemeData)
+         .post(`${domain}/api/themes`, postThemeData, requestConfig)
          .then((response) => {
             return response.data
          })
@@ -79,9 +76,12 @@ export const Api = {
             errorHandler(error)
          })
    },
-   postUserTaps: (postUserTaps: PostUserTaps): Promise<Error> => {
+   postUserTaps: (postUserTaps: PostUserTaps, headers: any): Promise<Error> => {
+      const requestConfig = {
+         headers,
+      }
       return axios
-         .post(`${domain}/api/user_taps`, postUserTaps, headers)
+         .post(`${domain}/api/user_taps`, postUserTaps, requestConfig)
          .then((response) => {
             return response.data
          })
@@ -89,9 +89,24 @@ export const Api = {
             errorHandler(error)
          })
    },
-   signIn: (loginInfo: LoginInfo): Promise<Error> => {
+   signIn: (
+      loginInfo: LoginInfo
+   ): Promise<Error> | Promise<void | UserInfo> => {
       return axios
-         .post(`${domain}/auth/sign_in`, loginInfo, headers)
+         .post(`${domain}/api/auth/sign_in`, loginInfo)
+         .then((response) => {
+            return response.headers
+         })
+         .catch((error) => {
+            errorHandler(error)
+         })
+   },
+   getMyInfo: (headers: any): Promise<Error> => {
+      const requestConfig = {
+         headers,
+      }
+      return axios
+         .get(`${domain}/api/users/myinfo`, requestConfig)
          .then((response) => {
             return response.data
          })
@@ -99,24 +114,17 @@ export const Api = {
             errorHandler(error)
          })
    },
-   // getMyInfo: (): Promise<Error> => {
-   //    return axios
-   //       .get(`${domain}/api/users/myinfo`, null, userData)
-   //       .then((response) => {
-   //          return response.data
-   //       })
-   //       .catch((error) => {
-   //          errorHandler(error)
-   //       })
-   // },
-   // logout: (): Promise<Error> => {
-   //    return axios
-   //       .delete(`${domain}/api/sign_in`)
-   //       .then((response) => {
-   //          return response.data
-   //       })
-   //       .catch((error) => {
-   //          errorHandler(error)
-   //       })
-   // },
+   logout: (headers: any): Promise<Error> => {
+      const requestConfig = {
+         headers,
+      }
+      return axios
+         .delete(`${domain}/api/sign_out`, requestConfig)
+         .then((response) => {
+            return response.data
+         })
+         .catch((error) => {
+            errorHandler(error)
+         })
+   },
 }

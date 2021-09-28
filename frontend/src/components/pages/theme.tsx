@@ -15,9 +15,12 @@ const Theme: FC = () => {
 
    useEffect(() => {
       setInterval(() => {
-         // Api.getTheme(undefined).then((res: any) => {
-         //    setTheme(res)
-         // })
+         const headers = JSON.parse(
+            localStorage.getItem('headerUserInfo') as string
+         )
+         Api.getThemes(undefined, headers).then((res: any) => {
+            setTheme(res)
+         })
          setTheme(theme_with_two_room)
          console.log('load theme')
       }, 5000)

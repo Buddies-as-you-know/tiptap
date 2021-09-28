@@ -25,7 +25,10 @@ const Themes: FC = () => {
    // const [themeOpen, setThemeOpen] = useState<boolean>(false)
 
    const handleGetThemes = (name: string | undefined) => {
-      Api.getThemes(name).then((res: any) => {
+      const headers = JSON.parse(
+         localStorage.getItem('headerUserInfo') as string
+      )
+      Api.getThemes(name, headers).then((res: any) => {
          setThemeList(res)
       })
    }

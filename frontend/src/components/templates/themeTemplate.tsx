@@ -103,7 +103,10 @@ const ThemeTemplate: FC<Props> = (props) => {
             room_id: theme.rooms[room].id,
             counts: max,
          }
-         Api.postUserTaps(requestParams).then((res: any) => {
+         const headers = JSON.parse(
+            localStorage.getItem('headerUserInfo') as string
+         )
+         Api.postUserTaps(requestParams, headers).then((res: any) => {
             console.log(res)
          })
          // 後で処理を５秒Fetchに移動させる。
