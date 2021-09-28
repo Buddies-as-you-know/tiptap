@@ -7,7 +7,7 @@ json = {
     close_time: t.close_time,
     duration: t.duration,
     total_counts: t.counts,
-    is_closed: Time.current.to_i <= t.close_time
+    is_closed: t.close_time < Time.current.to_i
     }
   }
 }
