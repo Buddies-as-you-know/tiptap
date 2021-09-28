@@ -12,9 +12,9 @@ json = {
       user_room_total_taps: r.user_room_total_taps,
       enthusiastic_close_time: r.enthusiastic_close_time,
       taps_ranking: {
-        "1": {name: @users[i].first.name, total_taps: @users[i].first.counts},
-        "2": {name: @users[i].second.name, total_taps: @users[i].second.counts},
-        "3": {name: @users[i].third.name, total_taps: @users[i].third.counts},
+        "1": {name: @users[i].first&.name, total_taps: @users[i].first&.counts},
+        "2": {name: @users[i].second&.name, total_taps: @users[i].second&.counts},
+        "3": {name: @users[i].third&.name, total_taps: @users[i].third&.counts},
       },
       time_series: @time_series[i],
     }
