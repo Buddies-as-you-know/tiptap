@@ -37,8 +37,9 @@ const useStyles = makeStyles({
       display: 'flex',
    },
    totalCount: {
+      fontFamily: Themes.font.fontFamily,
       display: 'flex',
-      marginRight: 'auto',
+      padding: '0px 8px',
    },
    closeTime: {
       fontFamily: Themes.font.fontFamily,
@@ -82,9 +83,7 @@ const ThemeListCards: FC = () => {
             const leftTime = timeCalService.DisplayLeaveTime(value.close_time)
             return (
                <Card
-                  className={
-                     value.is_closed ? classes.card : classes.disableCard
-                  }
+                  className={classes.card}
                   key={value.id}
                   onClick={() => {
                      history.push(Routes.themes.path + '/' + String(value.id))

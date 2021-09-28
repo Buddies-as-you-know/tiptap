@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useContext } from 'react'
 import { Api } from 'src/action/action'
 import { sendSuccess, sendError } from 'src/alert/swalAlertContent'
 import { PostTheme } from 'src/domain/postThemes'
@@ -13,6 +13,7 @@ import { FormatCheckService } from 'src/services/formatCheckService'
 import swal from 'sweetalert'
 
 import Themes from '../../utils/theme'
+import { ThemeListContext } from '../pages/themes'
 
 import ThemeForm from './themeForm'
 
@@ -31,14 +32,19 @@ const initialPostThemeData: PostTheme = {
 const ThemeDialog: FC<any> = (props) => {
    const classes = useStyles()
    const { open, handleDialogClose } = props
+   const { handleGetThemes } = useContext(ThemeListContext)
    const [postThemeData, setPostThemeData] =
       useState<PostTheme>(initialPostThemeData)
    const formatCheckService = new FormatCheckService()
 
    const handlePostTheme = () => {
-      Api.postThemes(postThemeData).then((res: any) => {
+      const headers = JSON.parse(
+         localStorage.getItem('headerUserInfo') as string
+      )
+      Api.postThemes(postThemeData, headers).then((res: any) => {
          if (res) {
             swal(sendSuccess).then(() => {
+               handleGetThemes(undefined)
                handleDialogClose()
             })
          } else {

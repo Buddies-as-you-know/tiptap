@@ -2,8 +2,6 @@ import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import Container from '@material-ui/core/Container'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import FormControl from '@material-ui/core/FormControl'
 import IconButton from '@material-ui/core/IconButton'
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -16,7 +14,7 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
-import { loginError, networkError } from 'src/alert/swalAlertContent'
+import { loginError, fetchError } from 'src/alert/swalAlertContent'
 import { UserInfo, LoginInfo } from 'src/domain/userInfo'
 import TipTapLogo from 'src/images/TipTap_logo.png'
 import swal from 'sweetalert'
@@ -42,12 +40,6 @@ const LandingTemplate: FC = () => {
       setLoginInfo({ ...loginInfo, [name]: event.target.value })
    }
 
-   const onChange = (event: any) => {
-      if (event.target.value) {
-         setChecked(!checked)
-      }
-   }
-
    const handleClickShowPassword = () => {
       setValues({ ...values, showPassword: !values.showPassword })
    }
@@ -59,15 +51,24 @@ const LandingTemplate: FC = () => {
    const loginCheck = () => {
       setSignInName('Signing in...')
       setSignInButtonFlag(true)
-      Api.signIn(loginInfo).then((res: any) => {
-         if (res) {
-            history.push(Routes.themes.path)
+      Api.signIn(loginInfo).then((headerUserInfo: any) => {
+         if (headerUserInfo) {
+            console.log(headerUserInfo)
+            const headerUserInfoJson = JSON.stringify(headerUserInfo)
+            localStorage.setItem('headerUserInfo', headerUserInfoJson)
+            Api.getMyInfo(headerUserInfo).then((myInfo: any) => {
+               if (myInfo) {
+                  history.push(Routes.themes.path)
+               } else {
+                  swal(fetchError)
+                  setSignInName('Sign in')
+                  setSignInButtonFlag(false)
+               }
+            })
          } else {
-            //一旦通す
-            history.push(Routes.themes.path)
-            // swal(loginError)
-            // setSignInName('Sign in')
-            // setSignInButtonFlag(false)
+            swal(loginError)
+            setSignInName('Sign in')
+            setSignInButtonFlag(false)
          }
       })
    }
