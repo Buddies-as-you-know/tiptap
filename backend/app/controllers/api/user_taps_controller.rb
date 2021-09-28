@@ -18,6 +18,6 @@ class Api::UserTapsController < ApplicationController
 
   def is_enthusiastic?(room)
     current_user_taps_num = UserTap.where(room_id: room.id, created_at: Time.current.ago(30.seconds)..Time.current).count
-    current_user_taps_num > 90
+    current_user_taps_num > 10
   end
 end
