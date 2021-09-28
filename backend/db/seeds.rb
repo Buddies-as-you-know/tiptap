@@ -32,5 +32,7 @@ ActiveRecord::Base.transaction do
       counts: row[2],
       created_at: Time.new(2021, 9, 28, 1, 0, 0, '+00:00')+ SecureRandom.random_number(1*60*60),
     )
+    user = User.find(row[0].to_i)
+    user.update(counts: user.counts+row[2].to_i)
   end
 end
