@@ -13,12 +13,10 @@ class Api::ThemesController < ApplicationController
     @theme = Theme.find(params[:id])
     @rooms = @theme.rooms
     @rooms.each do |room|
-      #user_room_total_tapsはroom attr_accessorに持たせたい
-      # @user_room_total_taps = UserTap.where(user_id: 1, room_id: 1).sum(:counts)
-      room.user_room_total_taps = UserTap.where(user_id: 1, room_id: 1).sum(:counts)
+      room.user_room_total_taps = UserTap.where(user_id: current_api_user, room_id: room.id).sum(:counts)
     end
+    # todo: themeのclose時とopen時で処理の切り分け
     # if Time.now < @theme.close_time
-    #   @rooms = @theme.rooms
     render "api/theme/show.json.jb"
   end
 
