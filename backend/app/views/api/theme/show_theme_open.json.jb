@@ -1,8 +1,8 @@
 json = {
-  name: @theme.id,
+  name: @theme.name,
   rooms_num: @theme.rooms_num,
   close_time: @theme.close_time,
-  is_closed: @theme.is_closed,
+  is_closed: false,
   user_id: @theme.user.id,
   created_at: @theme.created_at,
   rooms: @rooms.map { |r| {

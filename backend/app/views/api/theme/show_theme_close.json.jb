@@ -1,23 +1,22 @@
 json = {
-  name: string
-  rooms_num: int
-  close_time: int
-  is_closed: boolean
-  user_id: int
-  created_at: int
-  rooms: [
-    {
-      id: int
-      name: string
-      total_counts: int
-      user_room_total_taps: int
+  name: @theme.name,
+  rooms_num: @theme.rooms_num,
+  close_time: @theme.close_time,
+  is_closed: true,
+  user_id: @theme.user_id,
+  created_at: @theme.created_at,
+  rooms: @rooms.map { |r| {
+      id: r.id,
+      name: r.name,
+      total_counts: r.counts,
+      user_room_total_taps: r.user_room_total_taps,
       taps_ranking: {
-          1: { name: string, total_taps: int },
-          2: { name: string, total_taps: int },
-          3: { name: string, total_taps: int }
-      }
-      time_series: [{0,150},{1,200},...,{num,counts},...,{99,400}]
+        "1": {name: @users.first.name, total_taps: @users.first.counts},
+        "2": {name: @users.second.name, total_taps: @users.second.counts},
+        "3": {name: @users.third.name, total_taps: @users.third.counts},
+      },
+      time_series: @time_series,
     }
-  ]
+  }
 }
 json
