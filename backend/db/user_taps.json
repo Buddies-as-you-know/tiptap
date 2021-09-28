@@ -1,1 +1,8 @@
-[{"room_id": " 'room_id'", "counts": " 'counts'", "user_id": "'user_id'"}, {"room_id": "1", "counts": "10", "user_id": "3"}, {"room_id": "1", "counts": "15", "user_id": "3"}, {"room_id": "2", "counts": "10", "user_id": "3"}, {"room_id": "2", "counts": "10", "user_id": "3"}, {"room_id": "2", "counts": "10", "user_id": "3"}, {"room_id": "3", "counts": "25", "user_id": "1"}, {"room_id": "3", "counts": "15", "user_id": "1"}, {"room_id": "3", "counts": "10", "user_id": "1"}, {"room_id": "3", "counts": "20", "user_id": "1"}, {"room_id": "3", "counts": "15", "user_id": "1"}, {"room_id": "3", "counts": "10", "user_id": "1"}, {"room_id": "3", "counts": "20", "user_id": "1"}, {"room_id": "3", "counts": "15", "user_id": "1"}, {"room_id": "3", "counts": "10", "user_id": "1"}, {"room_id": "3", "counts": "20", "user_id": "1"}, {"room_id": "3", "counts": "15", "user_id": "2"}, {"room_id": "3", "counts": "10", "user_id": "2"}, {"room_id": "3", "counts": "20", "user_id": "2"}, {"room_id": "3", "counts": "15", "user_id": "2"}, {"room_id": "3", "counts": "10", "user_id": "2"}, {"room_id": "3", "counts": "20", "user_id": "2"}, {"room_id": "3", "counts": "15", "user_id": "2"}, {"room_id": "3", "counts": "10", "user_id": "2"}, {"room_id": "3", "counts": "20", "user_id": "2"}, {"room_id": "3", "counts": "15", "user_id": "2"}, {"room_id": "3", "counts": "10", "user_id": "2"}, {"room_id": "3", "counts": "20", "user_id": "2"}]
+[
+  { "room_id": "1", "counts": "10", "user_id": "3" },
+  { "room_id": "1", "counts": "15", "user_id": "3" },
+  { "room_id": "2", "counts": "10", "user_id": "3" },
+  { "room_id": "2", "counts": "10", "user_id": "3" },
+  { "room_id": "2", "counts": "10", "user_id": "3" },
+  { "room_id": "3", "counts": "25", "user_id": "1" }
+]

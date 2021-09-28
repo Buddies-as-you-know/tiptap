@@ -1,34 +1,36 @@
 require 'csv'
+require 'securerandom'
 
 ActiveRecord::Base.transaction do
   CSV.foreach('db/users.csv') do |row|
-    User.create(
+    User.create!(
       name: row[0],
       email: row[1],
       password: row[2],
-      counts: row[3],
+    )
+  end
+  CSV.foreach('db/themes.csv') do |row|
+    theme = Theme.create!(
+      user_id: row[0],
+      name: row[1],
+      rooms_num: row[2],
+      close_time: Time.new(2021, 9, 28, 2, 0, 0, '+00:00'),
+      is_closed: row[4],
+      created_at: Time.new(2021, 9, 28, 1, 0, 0, '+00:00')
     )
   end
   CSV.foreach('db/rooms.csv') do |row|
-    Room.create(
+    Room.create!(
       theme_id: row[0],
       name: row[1],
     )
   end
-  CSV.foreach('db/themes.csv') do |row|
-    theme = Theme.create(
-      user_id: row[0],
-      name: row[1],
-      rooms_num: row[2],
-      close_time: row[3],
-      is_closed: row[4],
-    )
-  end
   CSV.foreach('db/user_taps.csv') do |row|
-    UserTap.create(
+   user_tap = UserTap.create!(
       user_id: row[0],
       room_id: row[1],
       counts: row[2],
+      created_at: Time.new(2021, 9, 28, 1, 0, 0, '+00:00')+ SecureRandom.random_number(1*60*60),
     )
   end
 end
