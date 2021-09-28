@@ -42,7 +42,6 @@ ActiveRecord::Base.transaction do
     room = Room.find_or_create_by(id: row[1])
     room.update(counts: room.counts+row[2].to_i)
     room.user_taps << user_tap
-    #todo room.user_room_total_taps 計算
     user_tap.save!
   end
 
