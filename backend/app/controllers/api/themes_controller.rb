@@ -9,7 +9,6 @@ class Api::ThemesController < ApplicationController
       theme.duration = theme.close_time - theme.created_at.to_i
       theme.counts = theme.rooms.sum(:counts)
     end
-    @is_closed = Time.current.to_i <= @theme.close_time
     render "api/theme/index.json.jb"
   end
 
