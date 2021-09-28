@@ -1,4 +1,5 @@
 class Theme < ApplicationRecord
+  attr_accessor :counts, :duration
   belongs_to :user
   has_many :rooms
   validates :name, presence: true

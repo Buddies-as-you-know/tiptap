@@ -5,6 +5,7 @@ const Theme: Themes = {
       primaryColor: '#094067',
       secondaryColor: '#ef4565',
       greyColor: '#5f6c7b',
+      disableColor: '#f1e7e7',
    },
    font: {
       fontFamily:

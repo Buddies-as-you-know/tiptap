@@ -1,0 +1,17 @@
+json = {
+  name: @theme.name,
+  rooms_num: @theme.rooms_num,
+  close_time: @theme.close_time,
+  is_closed: false,
+  user_id: @theme.user.id,
+  created_at: @theme.created_at,
+  rooms: @rooms.map { |r| {
+      id: r.id,
+      name: r.name,
+      total_counts: r.counts,
+      user_room_total_taps: r.user_room_total_taps,
+      enthusiastic_close_time: r.enthusiastic_close_time
+    }
+  }
+}
+json

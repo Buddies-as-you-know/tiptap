@@ -7,22 +7,27 @@ export class TimeCalService {
       return result
    }
    //残り時間(unixtime)をリターン
-   public DisplayLeaveTime(unixTime: number): string {
+   public DisplayLeaveTime(unixTime: number) {
+      const object = {
+         isClose: false,
+         displayTime: '',
+      }
       const currentTime = moment()
       const closeTime = moment(unixTime * 1000)
       const duration = this.LeaveTime(unixTime)
-      console.log(duration)
       if (duration < 0) {
-         return '終了'
+         object.isClose = true
+         object.displayTime = '終了'
       } else if (duration >= 0 && duration < 60) {
-         return closeTime.diff(currentTime, 'seconds') + '秒'
+         object.displayTime = closeTime.diff(currentTime, 'seconds') + '秒'
       } else if (duration >= 60 && duration < 3600) {
-         return closeTime.diff(currentTime, 'minutes') + '分'
+         object.displayTime = closeTime.diff(currentTime, 'minutes') + '分'
       } else {
-         return closeTime.diff(currentTime, 'hours') + '時間'
+         object.displayTime = closeTime.diff(currentTime, 'hours') + '時間'
       }
+      return object
    }
-   //時間が過ぎたかどうか(unixtime)をリターン
+  //時間が過ぎたかどうか(unixtime)をリターン
    public IsPassed(closeTime: number): boolean {
       const result = closeTime - moment().unix()
       if (result > 0) {

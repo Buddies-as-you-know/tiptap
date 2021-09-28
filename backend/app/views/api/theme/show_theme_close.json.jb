@@ -1,0 +1,26 @@
+json = {
+  name: @theme.name,
+  rooms_num: @theme.rooms_num,
+  close_time: @theme.close_time,
+  is_closed: true,
+  user_id: @theme.user_id,
+  created_at: @theme.created_at,
+  rooms: @rooms.map.with_index { |r, i| {
+      id: r.id,
+      name: r.name,
+      total_counts: r.counts,
+      user_room_total_taps: r.user_room_total_taps,
+      enthusiastic_close_time: r.enthusiastic_close_time,
+      taps_ranking: {
+        "1": {name: @users[i].first.name, total_taps: @users[i].first.counts},
+        "2": {name: @users[i].second.name, total_taps: @users[i].second.counts},
+        "3": {name: @users[i].third.name, total_taps: @users[i].third.counts},
+      },
+      time_series: @time_series[i],
+    }
+  }
+}
+
+
+
+json
