@@ -6,7 +6,7 @@ class Api::ThemesController < ApplicationController
     @themes = @themes.select { |t| t.name.include? params[:name] } if params[:name]
     @themes = @themes[0, 99]
     @themes.each do |theme|
-      theme.duration = theme.close_time - theme.created_at
+      theme.duration = theme.close_time - theme.created_at.to_i
       theme.counts = theme.rooms.sum(:counts)
     end
     render "api/theme/index.json.jb"
@@ -17,7 +17,7 @@ class Api::ThemesController < ApplicationController
     @rooms = @theme.rooms
     room_ids = []
     @rooms.each do |room|
-      room.user_room_total_taps = UserTap.where(user_id: current_api_user, room_id: room.id).sum(:counts)
+      room.user_room_total_taps = UserTap.where(user_id: current_api_user.id, room_id: room.id).sum(:counts)
       room_ids.push(room.id)
     end
 
