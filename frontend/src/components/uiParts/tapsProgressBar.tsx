@@ -1,7 +1,11 @@
 import { Box, LinearProgress, Typography } from '@material-ui/core'
-import { makeStyles, createStyles, withStyles, Theme } from '@material-ui/core/styles';
+import {
+   makeStyles,
+   createStyles,
+   withStyles,
+   Theme,
+} from '@material-ui/core/styles'
 import React, { FC } from 'react'
-
 
 type Props = {
    progress: number
@@ -9,24 +13,24 @@ type Props = {
 }
 
 const BorderLinearProgress = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      height: 10,
-      borderRadius: 5,
-    },
-    colorPrimary: {
-      backgroundColor: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-    },
-    bar: {
-      borderRadius: 5,
-      backgroundColor: '#1a90ff',
-    },
-  }),
-)(LinearProgress);
+   createStyles({
+      root: {
+         height: 10,
+         borderRadius: 5,
+      },
+      colorPrimary: {
+         backgroundColor:
+            theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+      },
+      bar: {
+         borderRadius: 5,
+         backgroundColor: '#1a90ff',
+      },
+   })
+)(LinearProgress)
 
 const TapsProgressBar: FC<Props> = (props) => {
    const { progress, max } = props
-   console.log(progress)
 
    return (
       <>

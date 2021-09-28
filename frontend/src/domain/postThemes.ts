@@ -4,6 +4,8 @@ export type SearchedThemes = {
    name: string
    rooms_num: number
    close_time: number
+   total_counts: number
+   duration: number
    is_closed: boolean
 }
 

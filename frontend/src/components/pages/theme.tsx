@@ -14,11 +14,13 @@ const Theme: FC = () => {
    const [theme, setTheme] = useState<any>(0)
 
    useEffect(() => {
-      setTheme(theme_with_two_room)
-      // Api.getTemes(undefined).then((res: any) => {
-      //    setTheme(res)
-      // })
-      console.log('load theme')
+      setInterval(() => {
+         // Api.getTheme(undefined).then((res: any) => {
+         //    setTheme(res)
+         // })
+         setTheme(theme_with_two_room)
+         console.log('load theme')
+      }, 5000)
    }, [])
 
    return (

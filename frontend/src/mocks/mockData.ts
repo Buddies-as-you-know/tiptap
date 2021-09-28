@@ -11,42 +11,42 @@ export const users = {
    updated_at: moment('2021-09-22T09:30:00').unix(),
 }
 
-export const themes: ThemeList = {
-   searched_themes: [
-      {
-         id: 0,
-         user_id: 0,
-         name: '阪神vs巨人',
-         rooms_num: 0,
-         close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
-      },
-      {
-         id: 1,
-         user_id: 0,
-         name: '阪神vs巨人',
-         rooms_num: 0,
-         close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
-      },
-      {
-         id: 2,
-         user_id: 0,
-         name: '阪神vs巨人',
-         rooms_num: 0,
-         close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
-      },
-      {
-         id: 3,
-         user_id: 0,
-         name: '阪神vs巨人',
-         rooms_num: 0,
-         close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
-      },
-   ],
-}
+// export const themes: ThemeList = {
+//    searched_themes: [
+//       {
+//          id: 0,
+//          user_id: 0,
+//          name: '阪神vs巨人',
+//          rooms_num: 0,
+//          close_time: moment('2021-09-22T09:30:00').unix(),
+//          is_closed: true,
+//       },
+//       {
+//          id: 1,
+//          user_id: 0,
+//          name: '阪神vs巨人',
+//          rooms_num: 0,
+//          close_time: moment('2021-09-22T09:30:00').unix(),
+//          is_closed: true,
+//       },
+//       {
+//          id: 2,
+//          user_id: 0,
+//          name: '阪神vs巨人',
+//          rooms_num: 0,
+//          close_time: moment('2021-09-22T09:30:00').unix(),
+//          is_closed: true,
+//       },
+//       {
+//          id: 3,
+//          user_id: 0,
+//          name: '阪神vs巨人',
+//          rooms_num: 0,
+//          close_time: moment('2021-09-22T09:30:00').unix(),
+//          is_closed: true,
+//       },
+//    ],
+// }
 
 export const Theme: ThemeList = {
    searched_themes: [
@@ -55,70 +55,91 @@ export const Theme: ThemeList = {
          user_id: 0,
          name: '阪神vs巨人',
          rooms_num: 2,
-         close_time: moment('2021-09-22T09:30:00').unix(),
+         duration: 20,
+         total_counts: 300,
+         close_time: moment('2021-09-28T17:10:00').unix(),
          is_closed: true,
       },
       {
          id: 1,
          user_id: 0,
          name: '鬼滅の刃',
-         rooms_num: 0,
-         close_time: moment('2021-09-22T09:30:00').unix(),
+         rooms_num: 1,
+         duration: 20,
+         total_counts: 300,
+         close_time: moment('2021-09-28T17:50:30').unix(),
          is_closed: true,
       },
       {
          id: 2,
          user_id: 0,
          name: '阪神vs巨人',
-         rooms_num: 0,
+         rooms_num: 2,
+         duration: 20,
+         total_counts: 300,
+
          close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
+         is_closed: false,
       },
       {
          id: 3,
          user_id: 0,
          name: '阪神vs巨人',
-         rooms_num: 0,
+         rooms_num: 2,
+         duration: 20,
+         total_counts: 300,
+
          close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
+         is_closed: false,
       },
       {
-         id: 3,
+         id: 4,
          user_id: 0,
          name: '阪神vs巨人',
-         rooms_num: 0,
+         rooms_num: 2,
+         duration: 20,
+         total_counts: 300,
+
          close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
+         is_closed: false,
       },
       {
-         id: 3,
+         id: 5,
          user_id: 0,
          name: '阪神vs巨人',
-         rooms_num: 0,
+         rooms_num: 2,
+         duration: 20,
+         total_counts: 300,
+
          close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
+         is_closed: false,
       },
       {
-         id: 3,
+         id: 6,
          user_id: 0,
          name: '阪神vs巨人',
-         rooms_num: 0,
+         rooms_num: 2,
+         duration: 20,
+         total_counts: 300,
+
          close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
+         is_closed: false,
       },
       {
-         id: 3,
+         id: 7,
          user_id: 0,
          name: '阪神vs巨人',
-         rooms_num: 0,
+         rooms_num: 2,
+         duration: 20,
+         total_counts: 300,
          close_time: moment('2021-09-22T09:30:00').unix(),
-         is_closed: true,
+         is_closed: false,
       },
    ],
 }
 
 export const theme_with_single_room_closed = {
-   name: "楽天インターン",
+   name: '楽天インターン',
    rooms_num: 1,
    close_time: moment('2021-09-22T10:10:00').unix(),
    is_closed: true,
@@ -127,9 +148,10 @@ export const theme_with_single_room_closed = {
    rooms: [
       {
          id: 1,
-         name: "楽天インターン",
+         name: '楽天インターン',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:25:00').unix(),
          time_series: [
             { num: 1, counts: 30 },
             { num: 2, counts: 10 },
@@ -139,19 +161,19 @@ export const theme_with_single_room_closed = {
             { num: 6, counts: 60 },
             { num: 7, counts: 10 },
             { num: 8, counts: 10 },
-            { num: 9, counts: 10 }
+            { num: 9, counts: 10 },
          ],
          taps_ranking: {
-            1: { name: "ほげほげ", total_taps: 1000 },
-            2: { name: "ぽけぽけ", total_taps: 200 },
-            3: { name: "こほこほ", total_taps: 130 }
-         }
-      }
-   ]
+            1: { name: 'ほげほげ', total_taps: 1000 },
+            2: { name: 'ぽけぽけ', total_taps: 200 },
+            3: { name: 'こほこほ', total_taps: 130 },
+         },
+      },
+   ],
 }
 
 export const theme_with_two_room_closed = {
-   name: "阪神×楽天",
+   name: '阪神×楽天',
    rooms_num: 2,
    close_time: moment('2021-09-22T10:10:00').unix(),
    is_closed: true,
@@ -160,9 +182,10 @@ export const theme_with_two_room_closed = {
    rooms: [
       {
          id: 1,
-         name: "楽天",
+         name: '楽天',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:25:00').unix(),
          time_series: [
             { num: 1, counts: 30 },
             { num: 2, counts: 10 },
@@ -172,19 +195,20 @@ export const theme_with_two_room_closed = {
             { num: 6, counts: 60 },
             { num: 7, counts: 10 },
             { num: 8, counts: 10 },
-            { num: 9, counts: 10 }
+            { num: 9, counts: 10 },
          ],
          taps_ranking: {
-            1: { name: "ほげほげ", total_taps: 1000 },
-            2: { name: "ぽけぽけ", total_taps: 200 },
-            3: { name: "こほこほ", total_taps: 130 }
-         }
+            1: { name: 'ほげほげ', total_taps: 1000 },
+            2: { name: 'ぽけぽけ', total_taps: 200 },
+            3: { name: 'こほこほ', total_taps: 130 },
+         },
       },
       {
          id: 1,
-         name: "楽天",
+         name: '楽天',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:25:00').unix(),
          time_series: [
             { num: 1, counts: 30 },
             { num: 2, counts: 10 },
@@ -194,19 +218,19 @@ export const theme_with_two_room_closed = {
             { num: 6, counts: 60 },
             { num: 7, counts: 10 },
             { num: 8, counts: 10 },
-            { num: 9, counts: 10 }
+            { num: 9, counts: 10 },
          ],
          taps_ranking: {
-            1: { name: "ほげほげ", total_taps: 500 },
-            2: { name: "ぽけぽけ", total_taps: 100 },
-            3: { name: "こほこほ", total_taps: 80 }
-         }
-      }
-   ]
+            1: { name: 'ほげほげ', total_taps: 500 },
+            2: { name: 'ぽけぽけ', total_taps: 100 },
+            3: { name: 'こほこほ', total_taps: 80 },
+         },
+      },
+   ],
 }
 
 export const theme_with_single_room = {
-   name: "楽天インターン",
+   name: '楽天インターン',
    rooms_num: 1,
    close_time: moment('2021-09-22T10:10:00').unix(),
    is_closed: false,
@@ -215,15 +239,16 @@ export const theme_with_single_room = {
    rooms: [
       {
          id: 1,
-         name: "楽天インターン",
+         name: '楽天インターン',
          total_counts: 220,
          user_room_total_taps: 30,
-      }
-   ]
+         enthusiastic_close_time: moment('2021-09-30T09:25:00').unix(),
+      },
+   ],
 }
 
 export const theme_with_two_room = {
-   name: "阪神×楽天",
+   name: '阪神×楽天',
    rooms_num: 2,
    close_time: moment('2021-09-22T10:10:00').unix(),
    is_closed: false,
@@ -232,17 +257,19 @@ export const theme_with_two_room = {
    rooms: [
       {
          id: 1,
-         name: "楽天",
+         name: '楽天',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:30:00').unix(),
       },
       {
-         id: 1,
-         name: "楽天",
+         id: 2,
+         name: '阪神',
          total_counts: 220,
-         user_room_total_taps: 30
-      }
-   ]
+         user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-30T09:25:00').unix(),
+      },
+   ],
 }
 
 // Table "users" {
