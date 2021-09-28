@@ -12,5 +12,12 @@
     "user_id": "2",
     "name": "ジュニア",
     "is_closed": "false"
+  },
+  {
+    "rooms_num": " 2",
+    "close_time": " 1632550340",
+    "user_id": "3",
+    "name": "Vim vs Emacs",
+    "is_closed": " true"
   }
 ]

@@ -5,14 +5,16 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { id } from 'date-fns/esm/locale'
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
-import { SearchedThemes } from '../../domain/themes'
-import { themes } from '../../mocks/mockData'
+import { SearchedThemes } from '../../domain/postThemes'
+import { Routes } from '../../domain/router'
+import { ThemeListContext } from '../pages/themes'
 
 const useStyles = makeStyles({
    root: {
-      minWidth: 275,
+      minWidth: 345,
       width: '70%',
       margin: '4px',
    },
@@ -28,10 +30,13 @@ const useStyles = makeStyles({
 
 const ThemeListCards: FC = (props) => {
    const classes = useStyles()
+   const history = useHistory()
+   const { themeList } = useContext(ThemeListContext)
+   console.log(themeList)
 
    return (
       <>
-         {themes.searched_themes.map((value: SearchedThemes) => {
+         {themeList.searched_themes.map((value: SearchedThemes) => {
             return (
                <Card className={classes.root} key={value.id}>
                   <CardContent>
@@ -40,8 +45,17 @@ const ThemeListCards: FC = (props) => {
                      </Typography>
                   </CardContent>
                   <CardActions>
-                     <Button size="small" className={classes.actions}>
-                        テーマを見る
+                     <Button
+                        size="small"
+                        color="primary"
+                        className={classes.actions}
+                        onClick={() => {
+                           history.push(
+                              Routes.themes.path + '/' + String(value.id)
+                           )
+                        }}
+                     >
+                        テーマを覗く
                      </Button>
                   </CardActions>
                </Card>

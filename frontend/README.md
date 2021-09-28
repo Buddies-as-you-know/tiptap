@@ -61,13 +61,24 @@ atomicデザインとクリーンアーキテクチャライクな設計を採�
 
 
 src</br> 
-　　　 ├── action 
+　　　 ├── action
+　　　 ├── alert
 　　　 ├── components
-　　　 ├── hooks  
+　　　 ├── hooks
+　　　 ├── images
 　　　 ├── mocks  
 　　　 ├── services  
 　　　 ├── types    
 　　　 └── utils
+
+### action
+
+-  apiアクションを定義
+
+### alert
+
+-  swalアラートの内容を定義
+
 
 ### components
 

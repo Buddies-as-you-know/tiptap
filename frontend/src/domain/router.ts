@@ -1,8 +1,8 @@
 // Read Only
 export const Routes = {
    landing: { title: 'ランディングページ', path: '/' },
-   themeList: { title: 'テーマリストページ', path: '/themeList' },
-   theme: { title: 'テーマページ', path: '/themeList/theme' },
+   themes: { title: 'テーマリストページ', path: '/themes' },
+   theme: { title: 'テーマページ', path: '/themes/:id' },
    themeBackground: {
       title: 'テーマの背景ページ(最終的には消す)',
       path: '/themeBackground',
