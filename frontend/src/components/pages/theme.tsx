@@ -1,12 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 
 import { Api } from '../../action/action'
-import {
-   theme_with_single_room_closed,
-   theme_with_two_room_closed,
-   theme_with_single_room,
-   theme_with_two_room,
-} from '../../mocks/mockData'
+import { theme_with_two_room } from '../../mocks/mockData'
 import RoomResultTemplate from '../templates/roomResultTemplate'
 import ThemeTemplate from '../templates/themeTemplate'
 

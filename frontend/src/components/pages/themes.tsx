@@ -1,13 +1,6 @@
 import React, { FC, useEffect, useState, createContext } from 'react'
 
 import { Api } from '../../action/action'
-import {
-   Theme,
-   theme_with_single_room_closed,
-   theme_with_two_room_closed,
-   theme_with_single_room,
-   theme_with_two_room,
-} from '../../mocks/mockData'
 import RoomResultTemplate from '../templates/roomResultTemplate'
 import ThemeListTemplate from '../templates/themeListTemplate'
 import ThemeTemplate from '../templates/themeTemplate'
@@ -20,9 +13,7 @@ type ContextProps = {
 export const ThemeListContext = createContext({} as ContextProps)
 
 const Themes: FC = () => {
-   const [themeList, setThemeList] = useState<any>(Theme)
-   const [theme, setTheme] = useState<any>(0)
-   // const [themeOpen, setThemeOpen] = useState<boolean>(false)
+   const [themeList, setThemeList] = useState<any>()
 
    const handleGetThemes = (name: string | undefined) => {
       const headers = JSON.parse(
@@ -33,15 +24,10 @@ const Themes: FC = () => {
       })
    }
 
-   // const handleOpenCloseTheme = () => {
-   //    setThemeOpen(!themeOpen)
-   // }
-
    useEffect(() => {
       handleGetThemes(undefined)
    }, [])
 
-   console.log(themeList)
    return (
       <div>
          {themeList && (
