@@ -5,31 +5,31 @@ type Props = {
    countUp: () => void
 }
 
-
 const TapButton: FC<Props> = (props) => {
    const { countUp } = props
 
    return (
       <>
-      <TapButtonBase onClick={countUp}>
-         <TapButtonTop></TapButtonTop>
-         <TapButtonBottom></TapButtonBottom>
-      </TapButtonBase>
+         <TapButtonBase onClick={countUp}>
+            <TapButtonTop></TapButtonTop>
+            <TapButtonBottom></TapButtonBottom>
+         </TapButtonBase>
       </>
    )
 }
 
 export default TapButton
 
-const TapButtonBase = styled.a `
+const TapButtonBase = styled.a`
    position: relative;
    display: block;
    width: 200px;
    height: 130px;
-   margin: 0 auto; 
-   `
+   margin: 0 auto;
+   -webkit-tap-highlight-color: transparent;
+`
 
-const TapButtonTop = styled.span `
+const TapButtonTop = styled.span`
    position: absolute;
    top: 0;
    left: 20px;
@@ -47,7 +47,7 @@ const TapButtonTop = styled.span `
       left: 0;
       width: 160px;
       height: 60px;
-      content: "";
+      content: '';
       border-radius: 80px / 30px;
       background: #ed4c4c;
    }
@@ -56,28 +56,28 @@ const TapButtonTop = styled.span `
       top: 20px;
       height: 40px;
       transition: 0s;
-   }    
+   }
 
    span {
       font-size: 38px;
       font-weight: bold;
-    
+
       position: absolute;
       top: -24px;
       left: 0;
-    
+
       width: 100%;
-    
+
       -webkit-transform: scaleY(0.75);
-    
+
       transform: scaleY(0.75);
       text-align: center;
-    
+
       color: #f6a3a3;
    }
-   `
+`
 
-const TapButtonBottom = styled.span `
+const TapButtonBottom = styled.span`
    position: absolute;
    top: 38px;
    left: 0;
@@ -92,19 +92,19 @@ const TapButtonBottom = styled.span `
    span {
       font-size: 38px;
       font-weight: bold;
-    
+
       position: absolute;
       top: -24px;
       left: 0;
-    
+
       width: 100%;
-    
+
       -webkit-transform: scaleY(0.75);
-    
+
       transform: scaleY(0.75);
       text-align: center;
-    
+
       color: #f6a3a3;
       z-index: 1000;
    }
-   `
+`
