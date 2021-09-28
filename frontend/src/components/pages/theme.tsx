@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { Api } from '../../action/action'
 import {
@@ -11,14 +12,16 @@ import RoomResultTemplate from '../templates/roomResultTemplate'
 import ThemeTemplate from '../templates/themeTemplate'
 
 const Theme: FC = () => {
+   const { id } = useParams<any>()
+   console.log(id)
+
    const [theme, setTheme] = useState<any>(0)
 
    useEffect(() => {
       setInterval(() => {
-         // Api.getTheme(undefined).then((res: any) => {
-         //    setTheme(res)
-         // })
-         setTheme(theme_with_two_room)
+         Api.getTheme(id).then((res: any) => {
+            setTheme(res)
+         })
          console.log('load theme')
       }, 5000)
    }, [])

@@ -1,4 +1,4 @@
-import { Box, Button, Grid } from '@material-ui/core'
+import { Box, Button, Grid, Typography } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import SyncIcon from '@material-ui/icons/Sync'
 import React, { FC, useState } from 'react'
@@ -20,6 +20,7 @@ type Props = {
          total_counts: number
          user_room_total_taps: number
          enthusiastic_close_time: number
+         tap_speed: number
          time_series: {
             num: number
             counts: number
@@ -77,7 +78,12 @@ const RoomTemplate: FC<Props> = (props) => {
                <Grid item>結果</Grid>
             </Box>
             <Grid item>
-               <h1>{theme_result.name}</h1>
+               <Typography noWrap style={{ textAlign: 'center' }}>
+                  <h2>{theme_result.name}</h2>
+                  {theme_result.rooms_num != 1 && (
+                     <h3>{theme_result.rooms[room].name} 陣営</h3>
+                  )}
+               </Typography>
             </Grid>
             <Grid item>
                <h1>累計タップ: {theme_result.rooms[room].total_counts}</h1>

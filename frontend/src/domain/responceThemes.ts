@@ -12,6 +12,7 @@ export type ResponceThemes = {
          total_counts: number
          user_room_total_taps: number
          enthusiastic_close_time: number
+         tap_speed: number
          time_series?: {
             num: number
             counts: number

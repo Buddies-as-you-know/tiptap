@@ -83,7 +83,7 @@ const ThemeListCards: FC = () => {
             return (
                <Card
                   className={
-                     value.is_closed ? classes.card : classes.disableCard
+                     !value.is_closed ? classes.card : classes.disableCard
                   }
                   key={value.id}
                   onClick={() => {
@@ -101,7 +101,7 @@ const ThemeListCards: FC = () => {
                         )}
                      </Typography>
                      <Typography className={classes.closeTime}>
-                        {value.is_closed && !leftTime.isClose ? (
+                        {!value.is_closed ? (
                            <>{leftTime.displayTime}</>
                         ) : (
                            <>終了</>

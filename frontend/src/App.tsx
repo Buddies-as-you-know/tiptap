@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Landing from './components/pages/landing'
 import Theme from './components/pages/theme'
 import Themes from './components/pages/themes'
-import ThemeBackground from './components/uiParts/themeBackground'
+import ThemeBackground from './components/uiParts/themeBackground.jsx'
 import { Routes } from './domain/router'
 
 const App: FC = () => {

@@ -1,6 +1,14 @@
 import React, { FC } from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import {
+   LineChart,
+   Line,
+   XAxis,
+   YAxis,
+   CartesianGrid,
+   Tooltip,
+   Legend,
+   ResponsiveContainer,
+} from 'recharts'
 
 type Props = {
    time_series: {
@@ -13,15 +21,6 @@ type Props = {
 
 const TapsLineChart: FC<Props> = (props) => {
    const { time_series } = props
-
-   // 時間正規化ロジック
-   // const time_span = (closed_at - started_at) / 10
-
-   // let time_max = started_at + time_span
-
-   // users_taps.map((user_tap) => {
-   //    if (user_tap.created_at <= time_max)
-   // })
 
    return (
       <>
@@ -43,7 +42,15 @@ const TapsLineChart: FC<Props> = (props) => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line name="タップ数" type="monotone" dataKey="counts" stroke="#8884d8" activeDot={{ r: 8 }} strokeWidth={3} animationDuration={3000} />
+                  <Line
+                     name="タップ数"
+                     type="monotone"
+                     dataKey="counts"
+                     stroke="#8884d8"
+                     activeDot={{ r: 3 }}
+                     strokeWidth={2}
+                     animationDuration={3000}
+                  />
                </LineChart>
             </ResponsiveContainer>
          </div>

@@ -71,7 +71,17 @@ export const Api = {
    },
    postThemes: (postThemeData: PostTheme): Promise<Error> => {
       return axios
-         .post(`${domain}/api/themes`, postThemeData)
+         .post(`${domain}/api/themes`, postThemeData, headers)
+         .then((response) => {
+            return response.data
+         })
+         .catch((error) => {
+            errorHandler(error)
+         })
+   },
+   getTheme: (id: string | undefined): Promise<Error> => {
+      return axios
+         .get(`${domain}/api/themes/${id}`, headers)
          .then((response) => {
             return response.data
          })
