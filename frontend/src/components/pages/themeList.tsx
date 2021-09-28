@@ -21,7 +21,7 @@ const ThemeList: FC = () => {
    }
 
    useEffect(() => {
-      // handleGetThemes(undefined)
+      handleGetThemes(undefined)
    }, [])
 
    console.log(themeList)
