@@ -6,7 +6,6 @@ ActiveRecord::Base.transaction do
       name: row[0],
       email: row[1],
       password: row[2],
-      counts: row[3],
     )
   end
   CSV.foreach('db/themes.csv') do |row|
