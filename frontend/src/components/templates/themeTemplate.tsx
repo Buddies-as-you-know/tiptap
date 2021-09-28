@@ -131,7 +131,7 @@ const ThemeTemplate: FC<Props> = (props) => {
    return (
       <div style={{ overflow: 'hidden', position: 'relative' }}>
          {theme.rooms &&
-            timeCalService.IsPassed(
+            !timeCalService.IsPassed(
                theme.rooms[room]?.enthusiastic_close_time
             ) && <ThemeBackground />}
          <div style={{ width: '100vw', height: '100vh' }}>

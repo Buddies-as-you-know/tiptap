@@ -13,26 +13,28 @@ const Theme: FC = () => {
       const headers = JSON.parse(
          localStorage.getItem('headerUserInfo') as string
       )
-      Api.getTheme(id, headers).then((res: any) => {
-         setTheme(res)
-      })
-      if (theme && !theme.is_closed) {
-         setInterval(() => {
-            console.log('フェッチ')
-            Api.getTheme(id, headers).then((res: any) => {
-               console.log(res)
-               setTheme(res)
-            })
-            // const headers = JSON.parse(
-            //    localStorage.getItem('headerUserInfo') as string
-            // )
-            // Api.getThemes(undefined, headers).then((res: any) => {
-            //    setTheme(res)
-            // })
-            // setTheme(theme_with_two_room)
-            //console.log('load theme')
-         }, 5000)
-      }
+      console.log(theme)
+      // if (!theme.is_closed) {
+      setInterval(() => {
+         console.log('フェッチ')
+         Api.getTheme(id, headers).then((res: any) => {
+            console.log(res)
+            setTheme(res)
+         })
+         // const headers = JSON.parse(
+         //    localStorage.getItem('headerUserInfo') as string
+         // )
+         // Api.getThemes(undefined, headers).then((res: any) => {
+         //    setTheme(res)
+         // })
+         // setTheme(theme_with_two_room)
+         //console.log('load theme')
+      }, 5000)
+      // } else {
+      //    Api.getTheme(id, headers).then((res: any) => {
+      //       setTheme(res)
+      //    })
+      // }
    }, [])
 
    console.log({ theme })
