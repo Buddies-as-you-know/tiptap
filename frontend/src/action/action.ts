@@ -1,7 +1,10 @@
 import axios, { AxiosError } from 'axios'
 import { PostTheme } from 'src/domain/postThemes'
+import { isNullishCoalesce } from 'typescript'
 
 import { PostUserTaps } from '../domain/postUserTaps'
+import { UserInfo, LoginInfo } from '../domain/userInfo'
+
 
 //サーバー接続の切り替え
 let domain: string
@@ -86,4 +89,34 @@ export const Api = {
             errorHandler(error)
          })
    },
+   signIn: (loginInfo: LoginInfo): Promise<Error> => {
+      return axios
+         .post(`${domain}/auth/sign_in`, loginInfo, headers)
+         .then((response) => {
+            return response.data
+         })
+         .catch((error) => {
+            errorHandler(error)
+         })
+   },
+   // getMyInfo: (): Promise<Error> => {
+   //    return axios
+   //       .get(`${domain}/api/users/myinfo`, null, userData)
+   //       .then((response) => {
+   //          return response.data
+   //       })
+   //       .catch((error) => {
+   //          errorHandler(error)
+   //       })
+   // },
+   // logout: (): Promise<Error> => {
+   //    return axios
+   //       .delete(`${domain}/api/sign_in`)
+   //       .then((response) => {
+   //          return response.data
+   //       })
+   //       .catch((error) => {
+   //          errorHandler(error)
+   //       })
+   // },
 }

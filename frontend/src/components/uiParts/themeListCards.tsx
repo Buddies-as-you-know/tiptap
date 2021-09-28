@@ -4,59 +4,114 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import { id } from 'date-fns/esm/locale'
-import React, { FC, useContext } from 'react'
+import DirectionsRunIcon from '@material-ui/icons/DirectionsRun'
+import moment from 'moment'
+import React, { FC, useContext, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { TimeCalService } from 'src/services/timeCalService'
 
 import { SearchedThemes } from '../../domain/postThemes'
 import { Routes } from '../../domain/router'
+import Themes from '../../utils/theme'
 import { ThemeListContext } from '../pages/themes'
+import CompetitionLabel from '../uiParts/competitionLabel'
 
 const useStyles = makeStyles({
-   root: {
+   card: {
+      fontFamily: Themes.font.fontFamily,
+      minWidth: 345,
+      width: '70%',
+      margin: '4px',
+   },
+   disableCard: {
+      fontFamily: Themes.font.fontFamily,
+      background: Themes.color.disableColor,
       minWidth: 345,
       width: '70%',
       margin: '4px',
    },
    title: {
-      fontSize: 16,
+      fontFamily: Themes.font.fontFamily,
+      fontSize: 20,
       fontWeight: 'bold',
-   },
-   actions: {
       display: 'flex',
+   },
+   totalCount: {
+      display: 'flex',
+      marginRight: 'auto',
+   },
+   closeTime: {
+      fontFamily: Themes.font.fontFamily,
+   },
+   competitionIcon: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '3px',
+      fontSize: '15px',
+      borderRadius: '5px',
       marginLeft: 'auto',
+      color: '#fff',
+      background: 'red',
    },
 })
 
-const ThemeListCards: FC = (props) => {
+type LeftTimeProps = {
+   isClose: boolean
+   displayTime: string
+}
+
+const object = {
+   isClose: false,
+   displayTime: '',
+}
+const ThemeListCards: FC = () => {
    const classes = useStyles()
    const history = useHistory()
+   const [leftTime, setLeftTime] = useState<LeftTimeProps>(object)
+   const timeCalService = new TimeCalService()
    const { themeList } = useContext(ThemeListContext)
    console.log(themeList)
+
+   // useEffect(() => {
+   //    setInterval(intervalCount, 1000)
+   // }, [])
 
    return (
       <>
          {themeList.searched_themes.map((value: SearchedThemes) => {
+            const leftTime = timeCalService.DisplayLeaveTime(value.close_time)
             return (
-               <Card className={classes.root} key={value.id}>
+               <Card
+                  className={
+                     value.is_closed ? classes.card : classes.disableCard
+                  }
+                  key={value.id}
+                  onClick={() => {
+                     history.push(Routes.themes.path + '/' + String(value.id))
+                  }}
+               >
                   <CardContent>
                      <Typography className={classes.title}>
-                        {value.name}
+                        <div>{value.name}</div>
+                        {value.rooms_num !== 1 && (
+                           <div className={classes.competitionIcon}>
+                              <DirectionsRunIcon />
+                              競争
+                           </div>
+                        )}
+                     </Typography>
+                     <Typography className={classes.closeTime}>
+                        {value.is_closed && !leftTime.isClose ? (
+                           <>{leftTime.displayTime}</>
+                        ) : (
+                           <>終了</>
+                        )}
                      </Typography>
                   </CardContent>
                   <CardActions>
-                     <Button
-                        size="small"
-                        color="primary"
-                        className={classes.actions}
-                        onClick={() => {
-                           history.push(
-                              Routes.themes.path + '/' + String(value.id)
-                           )
-                        }}
-                     >
-                        テーマを覗く
-                     </Button>
+                     <Typography className={classes.totalCount}>
+                        トータルカウント：{value.total_counts}
+                     </Typography>
                   </CardActions>
                </Card>
             )
