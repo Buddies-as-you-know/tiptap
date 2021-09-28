@@ -37,8 +37,26 @@ class Api::ThemesController < ApplicationController
         start = @theme.created_at.to_i
         stop = @theme.close_time
         step = ((stop - start) / 100).to_i
-        time_series = (start + step).step(by: step, to: stop).map { |t| UserTap.where(room_id: r.id, created_at: Time.at(t - step)..Time.at(t)) }
-        time_series = time_series.map.with_index(1) { |ts, idx| { num: idx, counts: ts.sum(:counts) } }
+
+        # room内の全てのuser_tapsを[[スタートからの相対時間, counts], ...]に変換
+        # 例：[[415, 10], [1633, 10], [814, 10], [3185, 10], [1325, 10], [1283, 10], ... ]
+        all_room_taps = UserTap.where(room_id: r.id).pluck(:created_at, :counts).map{|t| [(t[0].to_i - start), t[1]]}
+
+        # [[ 各ステップ, [[スタートからの相対時間, counts], ...] ], ...]に変換
+        # 例：[ [0,     [[20, 10]]], 
+        #      [1,     [[58, 10], [58, 10], [37, 10], [57, 10]]],
+        #      [2,     [[101, 10]]], 
+        #       ... ]
+        steps_taps = all_room_taps.group_by{|i| i[0] / step}
+        # fill empty step
+        (0..99).each{|i| steps_taps[i] = [[0, 0]] if steps_taps[i].nil?}
+        all_steps_taps = steps_taps.sort
+
+        # times_seriesの欲しい形に変換
+        time_series = all_steps_taps.map{|k, v| {num: k, counts: v.map{|c| c[1]}.sum }}
+
+        # time_series = (start + step).step(by: step, to: stop).map { |t| UserTap.where(room_id: r.id, created_at: Time.at(t - step)..Time.at(t)) }
+        # time_series = time_series.map.with_index(1) { |ts, idx| { num: idx, counts: ts.sum(:counts) } }
       end
 
       render "api/theme/show_theme_close.json.jb"
