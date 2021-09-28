@@ -1,11 +1,14 @@
 import { Box, Button } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import SyncIcon from '@material-ui/icons/Sync'
 import React, { FC, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Api } from 'src/action/action'
 import styled from 'styled-components'
 
 import { PostUserTaps } from '../../domain/postUserTaps'
+import { Routes } from '../../domain/router'
 import TapButton from '../uiParts/tapButton'
 import TapsProgressBar from '../uiParts/tapsProgressBar'
 
@@ -59,6 +62,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       zIndex: 200,
       ...theme.typography.button,
    },
+   backButton: {
+      position: 'fixed',
+      left: '25px',
+      top: '20px',
+      zIndex: 200,
+      ...theme.typography.button,
+   },
 }))
 
 const maxes = [10, 30, 50, 100]
@@ -66,6 +76,8 @@ const maxes = [10, 30, 50, 100]
 // TODO 全体的なスタイル調整
 const ThemeTemplate: FC<Props> = (props) => {
    const classes = useStyles()
+   const history = useHistory()
+
    const theme = props.theme
    const [taps, setTaps] = useState<number>(0)
    const [max, setMax] = useState<number>(10)
@@ -129,6 +141,20 @@ const ThemeTemplate: FC<Props> = (props) => {
             <Ocean depth={String(depth)}>
                <Wave></Wave>
             </Ocean>
+         </div>
+         <div className={classes.backButton}>
+            {theme.rooms_num != 1 && (
+               <Button
+                  color="primary"
+                  size="medium"
+                  onClick={() => {
+                     history.push(Routes.themes.path)
+                  }}
+               >
+                  <ArrowBackIosIcon />
+                  ルームリストに戻る
+               </Button>
+            )}
          </div>
       </div>
    )
