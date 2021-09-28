@@ -60,7 +60,7 @@ const ThemeForm: FC<Props> = (props) => {
             rooms: roomArray,
          })
       } else {
-         if (checked) {
+         if (checked || name == 'duration') {
             setPostThemeData({
                ...postThemeData,
                [name]: event.target.value,

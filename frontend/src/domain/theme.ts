@@ -3,6 +3,7 @@ export type Themes = {
       primaryColor: string
       secondaryColor: string
       greyColor: string
+      disableColor:string
    }
    font: {
       fontFamily: string
