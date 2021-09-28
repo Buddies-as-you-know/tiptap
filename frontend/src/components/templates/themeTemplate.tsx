@@ -12,6 +12,7 @@ import { Routes } from '../../domain/router'
 import { TimeCalService } from '../../services/timeCalService'
 import TapButton from '../uiParts/tapButton'
 import TapsProgressBar from '../uiParts/tapsProgressBar'
+import ThemeBackground from '../uiParts/themeBackground.jsx'
 
 type Props = {
    theme: {
@@ -27,6 +28,7 @@ type Props = {
          total_counts: number
          user_room_total_taps: number
          enthusiastic_close_time: number
+         tap_speed: number
          time_series?: {
             num: number
             counts: number
@@ -126,21 +128,24 @@ const ThemeTemplate: FC<Props> = (props) => {
       setTaps(0)
       setProgress(0)
       console.log(room)
-      console.log(
-         timeCalService.IsPassed(theme.rooms[room].enthusiastic_close_time)
-      )
    }
 
    return (
       <div style={{ overflow: 'hidden', position: 'relative' }}>
+         {theme.rooms &&
+            timeCalService.IsPassed(
+               theme.rooms[room]?.enthusiastic_close_time
+            ) && <ThemeBackground />}
          <div style={{ width: '100vw', height: '100vh' }}>
             <div className={classes.root}>
                <Typography noWrap style={{ textAlign: 'center' }}>
                   <h2>{theme.name}</h2>
                </Typography>
-               <Typography noWrap style={{ textAlign: 'center' }}>
-                  <h2>陣営: {theme.rooms && theme.rooms[room].name}</h2>
-               </Typography>
+               {theme.rooms_num > 1 && (
+                  <Typography noWrap style={{ textAlign: 'center' }}>
+                     <h2>陣営: {theme.rooms && theme.rooms[room]?.name}</h2>
+                  </Typography>
+               )}
                <Box mb={3}>
                   <TapButton countUp={countUp}></TapButton>
                </Box>

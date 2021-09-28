@@ -18,6 +18,14 @@ switch (window.location.host) {
       domain = 'https://d1-tiptap.herokuapp.com'
 }
 
+const headers = {
+   headers: {
+      client: '',
+      uid: '',
+      'access-token': '',
+   },
+}
+
 const errorHandler = (error: AxiosError) => {
    if (error.response) {
       switch (error.response.status) {
@@ -69,6 +77,16 @@ export const Api = {
       }
       return axios
          .post(`${domain}/api/themes`, postThemeData, requestConfig)
+         .then((response) => {
+            return response.data
+         })
+         .catch((error) => {
+            errorHandler(error)
+         })
+   },
+   getTheme: (id: string | undefined): Promise<Error> => {
+      return axios
+         .get(`${domain}/api/themes/${id}`, headers)
          .then((response) => {
             return response.data
          })
