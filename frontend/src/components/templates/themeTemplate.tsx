@@ -1,4 +1,4 @@
-import { Box, Button } from '@material-ui/core'
+import { Box, Button, Typography } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import SyncIcon from '@material-ui/icons/Sync'
@@ -9,6 +9,7 @@ import styled from 'styled-components'
 
 import { PostUserTaps } from '../../domain/postUserTaps'
 import { Routes } from '../../domain/router'
+import { TimeCalService } from '../../services/timeCalService'
 import TapButton from '../uiParts/tapButton'
 import TapsProgressBar from '../uiParts/tapsProgressBar'
 
@@ -25,6 +26,7 @@ type Props = {
          name: string
          total_counts: number
          user_room_total_taps: number
+         enthusiastic_close_time: number
          time_series?: {
             num: number
             counts: number
@@ -54,6 +56,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
+      color: '#333333',
+      padding: '10px',
+      backgroundColor: '#ffffff',
+      borderRadius: '5px',
    },
    floatButton: {
       position: 'absolute',
@@ -67,6 +73,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: '25px',
       top: '20px',
       zIndex: 200,
+      backgroundColor: '#ffffff',
+      borderRadius: '5px',
       ...theme.typography.button,
    },
 }))
@@ -83,15 +91,14 @@ const ThemeTemplate: FC<Props> = (props) => {
    const [max, setMax] = useState<number>(10)
    const [progress, setProgress] = useState<number>(0)
    const [room, setRoom] = useState<number>(0)
-   const [depth, setDepth] = useState<number>(0)
+   // depthを相対的にする必要あり。
+   const [depth, setDepth] = useState<number>(200)
 
    const countUp = () => {
-      setTaps(taps + 1)
+      setTaps((prev) => prev + 1)
       console.log(taps)
       if (taps >= max) {
-         // =========
-         // taps POSTしてあげる
-         //
+         // POST to user_taps
          const requestParams: PostUserTaps = {
             room_id: theme.rooms[room].id,
             counts: max,
@@ -100,24 +107,37 @@ const ThemeTemplate: FC<Props> = (props) => {
             console.log(res)
          })
          // 後で処理を５秒Fetchに移動させる。
-         setDepth(depth + max)
+         // setDepth(depth + max)
          setTaps(0)
          setMax(maxes[Math.floor(Math.random() * maxes.length)])
+         setProgress(0)
+      } else {
+         setProgress((prev) => prev + (1 / max) * 100)
       }
-      setProgress((taps / max) * 100)
    }
+
+   const timeCalService = new TimeCalService()
 
    const changeRoom = () => {
       setRoom((room + 1) % theme.rooms_num)
       setTaps(0)
       setProgress(0)
       console.log(room)
+      console.log(
+         timeCalService.IsPassed(theme.rooms[room].enthusiastic_close_time)
+      )
    }
 
    return (
       <div style={{ overflow: 'hidden', position: 'relative' }}>
          <div style={{ width: '100vw', height: '100vh' }}>
             <div className={classes.root}>
+               <Typography noWrap style={{ textAlign: 'center' }}>
+                  <h2>{theme.name}</h2>
+               </Typography>
+               <Typography noWrap style={{ textAlign: 'center' }}>
+                  <h2>陣営: {theme.rooms && theme.rooms[room].name}</h2>
+               </Typography>
                <Box mb={3}>
                   <TapButton countUp={countUp}></TapButton>
                </Box>
@@ -127,15 +147,37 @@ const ThemeTemplate: FC<Props> = (props) => {
                      max={max}
                   ></TapsProgressBar>
                </Box>
+               <Typography noWrap>
+                  <h2>
+                     合計スコア:{' '}
+                     {theme.rooms && theme.rooms[room].total_counts + taps}
+                  </h2>
+               </Typography>
+               <Typography noWrap>
+                  <h3>
+                     自分のスコア:{' '}
+                     {theme.rooms &&
+                        theme.rooms[room].user_room_total_taps + taps}
+                  </h3>
+               </Typography>
             </div>
             <div className={classes.floatButton}>
                {theme.rooms_num != 1 && (
-                  <Button color="secondary" size="medium" onClick={changeRoom}>
+                  <Button
+                     size="medium"
+                     onClick={changeRoom}
+                     style={{
+                        backgroundColor: '#3EDBF0',
+                        fontWeight: 'bold',
+                        color: '#333333',
+                     }}
+                  >
                      <SyncIcon />
                      陣営を変更
                   </Button>
                )}
             </div>
+            {/* { LeaveTime } */}
          </div>
          <div style={{ overflow: 'hidden' }}>
             <Ocean depth={String(depth)}>
@@ -178,7 +220,7 @@ const Wave = styled.div`
    top: -12px;
    width: 6400px;
    height: 30px;
-   animation: wave 60s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+   animation: wave 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
    transform: translate3d(0, 0, 0);
    @keyframes wave {
       0% {

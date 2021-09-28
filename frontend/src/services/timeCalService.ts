@@ -27,4 +27,12 @@ export class TimeCalService {
       }
       return object
    }
+  //時間が過ぎたかどうか(unixtime)をリターン
+   public IsPassed(closeTime: number): boolean {
+      const result = closeTime - moment().unix()
+      if (result > 0) {
+         return false
+      }
+      return true
+   }
 }

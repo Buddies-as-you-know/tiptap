@@ -151,6 +151,7 @@ export const theme_with_single_room_closed = {
          name: '楽天インターン',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:25:00').unix(),
          time_series: [
             { num: 1, counts: 30 },
             { num: 2, counts: 10 },
@@ -184,6 +185,7 @@ export const theme_with_two_room_closed = {
          name: '楽天',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:25:00').unix(),
          time_series: [
             { num: 1, counts: 30 },
             { num: 2, counts: 10 },
@@ -206,6 +208,7 @@ export const theme_with_two_room_closed = {
          name: '楽天',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:25:00').unix(),
          time_series: [
             { num: 1, counts: 30 },
             { num: 2, counts: 10 },
@@ -239,6 +242,7 @@ export const theme_with_single_room = {
          name: '楽天インターン',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-30T09:25:00').unix(),
       },
    ],
 }
@@ -256,12 +260,14 @@ export const theme_with_two_room = {
          name: '楽天',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-22T09:30:00').unix(),
       },
       {
-         id: 1,
-         name: '楽天',
+         id: 2,
+         name: '阪神',
          total_counts: 220,
          user_room_total_taps: 30,
+         enthusiastic_close_time: moment('2021-09-30T09:25:00').unix(),
       },
    ],
 }
