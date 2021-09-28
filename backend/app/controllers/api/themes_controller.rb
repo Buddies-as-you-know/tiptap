@@ -6,7 +6,7 @@ class Api::ThemesController < ApplicationController
     @themes = @themes.select { |t| t.name.include? params[:name] } if params[:name]
     @themes = @themes[0, 99]
     @themes.each do |theme|
-      theme.duration = theme.close_time - theme.created_at
+      theme.duration = theme.close_time - theme.created_at.to_i
       theme.counts = theme.rooms.sum(:counts)
     end
     render "api/theme/index.json.jb"
@@ -17,12 +17,13 @@ class Api::ThemesController < ApplicationController
     @rooms = @theme.rooms
     room_ids = []
     @rooms.each do |room|
-      room.user_room_total_taps = UserTap.where(user_id: current_api_user, room_id: room.id).sum(:counts)
+      room.user_room_total_taps = UserTap.where(user_id: current_api_user.id, room_id: room.id).sum(:counts)
       room_ids.push(room.id)
     end
 
     # todo: themeのclose時とopen時で処理の切り分け
     if Time.current.to_i <= @theme.close_time
+      @tap_speeds = @rooms.map { |r| UserTap.where(room_id: r.id, created_at: Time.current.ago(5.seconds)..Time.current).sum(:counts) / 5 }
       render "api/theme/show_theme_open.json.jb"
     else
       #@userとして@themeにuser_tapsを持ってるuserを抜き出して，sum(:counts)を計算してランキング返したい
