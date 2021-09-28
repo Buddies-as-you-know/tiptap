@@ -29,20 +29,20 @@ ActiveRecord::Base.transaction do
     Theme.find_or_create_by(id: row[0]).rooms << room
     room.save!
   end
-  CSV.foreach('db/user_taps.csv') do |row|
-   user_tap = UserTap.new(
-      user_id: row[0],
-      room_id: row[1],
+  (1..500).each{|num|
+    user_id = SecureRandom.random_number(6)+1
+    room_id = SecureRandom.random_number(2)+1
+    user_tap = UserTap.new(
+      user_id: user_id,
+      room_id: room_id,
       counts: 10,
       created_at: Time.new(2021, 9, 28, 1, 0, 0, '+00:00')+ SecureRandom.random_number(1*60*60),
     )
-    user = User.find_or_create_by(id: row[0])
-    user.update(counts: user.counts+row[2].to_i)
+    user = User.find_or_create_by(id: user_id)
+    user.update(counts: user.counts+room_id)
     user.user_taps << user_tap
-    room = Room.find_or_create_by(id: row[1])
-    room.update(counts: room.counts+row[2].to_i)
+    room = Room.find_or_create_by(id: room_id)
+    room.update(counts: room.counts+10)
     room.user_taps << user_tap
-    user_tap.save!
-  end
-
+    user_tap.save!}
 end
