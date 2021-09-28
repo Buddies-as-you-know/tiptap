@@ -84,9 +84,12 @@ export const Api = {
             errorHandler(error)
          })
    },
-   getTheme: (id: string | undefined): Promise<Error> => {
+   getTheme: (id: string | undefined, headers: any): Promise<Error> => {
+      const requestConfig = {
+         headers,
+      }
       return axios
-         .get(`${domain}/api/themes/${id}`, headers)
+         .get(`${domain}/api/themes/${id}`, requestConfig)
          .then((response) => {
             return response.data
          })

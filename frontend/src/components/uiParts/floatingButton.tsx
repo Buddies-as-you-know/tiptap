@@ -1,8 +1,8 @@
 import Fab from '@material-ui/core/Fab'
 import { makeStyles } from '@material-ui/core/styles'
 import AddIcon from '@material-ui/icons/Add'
-import moment from 'moment'
 import React, { useState, FC } from 'react'
+
 import ThemeDialog from './themeDialog'
 
 const useStyles = makeStyles((theme) => ({
@@ -43,10 +43,7 @@ const FloatingButton: FC = () => {
             <AddIcon className={classes.addIcon} />
             テーマを投稿する
          </Fab>
-         <ThemeDialog
-            open={open}
-            handleDialogClose={handleDialogClose}
-         />
+         <ThemeDialog open={open} handleDialogClose={handleDialogClose} />
       </div>
    )
 }

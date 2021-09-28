@@ -59,11 +59,11 @@ const RoomTemplate: FC<Props> = (props) => {
    const classes = useStyles()
    const [room, setRoom] = useState<number>(0)
 
-   console.log('room template')
+   //console.log('room template')
 
    const changeRoom = () => {
       setRoom((room + 1) % theme_result.rooms_num)
-      console.log(room)
+     // console.log(room)
    }
 
    return (

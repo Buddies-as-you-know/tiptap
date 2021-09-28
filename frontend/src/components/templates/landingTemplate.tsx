@@ -9,13 +9,12 @@ import InputLabel from '@material-ui/core/InputLabel'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles, Theme } from '@material-ui/core/styles'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { loginError, fetchError } from 'src/alert/swalAlertContent'
-import { UserInfo, LoginInfo } from 'src/domain/userInfo'
+import { LoginInfo } from 'src/domain/userInfo'
 import TipTapLogo from 'src/images/TipTap_logo.png'
 import swal from 'sweetalert'
 
@@ -31,7 +30,6 @@ const LandingTemplate: FC = () => {
    })
    const [signInName, setSignInName] = React.useState('Sign in')
    const [signInButtonFlag, setSignInButtonFlag] = React.useState(false)
-   const [checked, setChecked] = React.useState(false)
    const [values, setValues] = React.useState({
       password: '',
       showPassword: false,
@@ -53,7 +51,7 @@ const LandingTemplate: FC = () => {
       setSignInButtonFlag(true)
       Api.signIn(loginInfo).then((headerUserInfo: any) => {
          if (headerUserInfo) {
-            console.log(headerUserInfo)
+            //console.log(headerUserInfo)
             const headerUserInfoJson = JSON.stringify(headerUserInfo)
             localStorage.setItem('headerUserInfo', headerUserInfoJson)
             Api.getMyInfo(headerUserInfo).then((myInfo: any) => {
@@ -92,18 +90,15 @@ const LandingTemplate: FC = () => {
             Sign in to TipTap
          </Typography>
          <Card variant="outlined">
-            {/* {linearAnimation && <LinearProgress />} */}
             <CardContent>
                <form style={{ width: '100%' }} noValidate>
                   <TextField
                      margin="normal"
-                     //required
                      variant="outlined"
                      fullWidth
                      id="email"
                      label="メールアドレス"
                      name="email"
-                     //autoComplete="id"
                      inputProps={{ style: { padding: '15px 13px' } }}
                      onChange={handleLoginInfoChange('email')}
                      //autoFocus
