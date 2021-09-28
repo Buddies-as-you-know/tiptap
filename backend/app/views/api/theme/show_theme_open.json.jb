@@ -5,6 +5,7 @@ json = {
   is_closed: false,
   user_id: @theme.user.id,
   created_at: @theme.created_at,
+  tap_speed: @tap_speed,
   rooms: @rooms.map { |r| {
       id: r.id,
       name: r.name,
