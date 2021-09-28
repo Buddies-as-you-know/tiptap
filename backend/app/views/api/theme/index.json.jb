@@ -5,7 +5,7 @@ json = {
     name: t.name,
     rooms_num: t.rooms_num,
     close_time: t.close_time,
-    is_closed: t.is_closed
+    is_closed: t.close_time <= Time.current.to_i
     }
   }
 }
