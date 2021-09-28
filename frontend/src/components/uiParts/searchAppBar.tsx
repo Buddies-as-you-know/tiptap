@@ -10,7 +10,7 @@ import { Api } from 'src/action/action'
 import TipTapLogo from 'src/image/TipTap_logo.png'
 
 import Themes from '../../utils/theme'
-import { ThemeListContext } from '../pages/themeList'
+import { ThemeListContext } from '../pages/themes'
 
 const useStyles = makeStyles((theme) => ({
    root: {

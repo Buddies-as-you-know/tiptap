@@ -6,9 +6,11 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { id } from 'date-fns/esm/locale'
 import React, { FC, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 import { SearchedThemes } from '../../domain/postThemes'
-import { ThemeListContext } from '../pages/themeList'
+import { Routes } from '../../domain/router'
+import { ThemeListContext } from '../pages/themes'
 
 const useStyles = makeStyles({
    root: {
@@ -27,9 +29,10 @@ const useStyles = makeStyles({
 })
 
 const ThemeListCards: FC = (props) => {
+   const classes = useStyles()
+   const history = useHistory()
    const { themeList } = useContext(ThemeListContext)
    console.log(themeList)
-   const classes = useStyles()
 
    return (
       <>
@@ -42,8 +45,17 @@ const ThemeListCards: FC = (props) => {
                      </Typography>
                   </CardContent>
                   <CardActions>
-                     <Button size="small" className={classes.actions}>
-                        テーマを見る
+                     <Button
+                        size="small"
+                        color="primary"
+                        className={classes.actions}
+                        onClick={() => {
+                           history.push(
+                              Routes.themes.path + '/' + String(value.id)
+                           )
+                        }}
+                     >
+                        テーマを覗く
                      </Button>
                   </CardActions>
                </Card>

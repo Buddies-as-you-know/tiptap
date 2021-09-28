@@ -54,14 +54,14 @@ export const Theme: ThemeList = {
          id: 0,
          user_id: 0,
          name: '阪神vs巨人',
-         rooms_num: 0,
+         rooms_num: 2,
          close_time: moment('2021-09-22T09:30:00').unix(),
          is_closed: true,
       },
       {
          id: 1,
          user_id: 0,
-         name: '阪神vs巨人',
+         name: '鬼滅の刃',
          rooms_num: 0,
          close_time: moment('2021-09-22T09:30:00').unix(),
          is_closed: true,
@@ -116,6 +116,7 @@ export const Theme: ThemeList = {
       },
    ],
 }
+
 export const theme_with_single_room_closed = {
    name: "楽天インターン",
    rooms_num: 1,
