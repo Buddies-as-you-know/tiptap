@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import SyncIcon from '@material-ui/icons/Sync'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Api } from 'src/action/action'
 import styled from 'styled-components'
@@ -97,7 +97,7 @@ const ThemeTemplate: FC<Props> = (props) => {
 
    const countUp = () => {
       setTaps((prev) => prev + 1)
-      console.log(taps)
+      //console.log(taps)
       if (taps >= max) {
          // POST to user_taps
          const requestParams: PostUserTaps = {
@@ -108,7 +108,7 @@ const ThemeTemplate: FC<Props> = (props) => {
             localStorage.getItem('headerUserInfo') as string
          )
          Api.postUserTaps(requestParams, headers).then((res: any) => {
-            console.log(res)
+            //console.log(res)
          })
          // 後で処理を５秒Fetchに移動させる。
          // setDepth(depth + max)
@@ -125,7 +125,7 @@ const ThemeTemplate: FC<Props> = (props) => {
       setRoom((room + 1) % theme.rooms_num)
       setTaps(0)
       setProgress(0)
-      console.log(room)
+      //console.log(room)
    }
 
    return (
@@ -156,14 +156,14 @@ const ThemeTemplate: FC<Props> = (props) => {
                <Typography noWrap>
                   <h2>
                      合計スコア:{' '}
-                     {theme.rooms && theme.rooms[room].total_counts + taps}
+                     {theme.rooms && theme.rooms[room]?.total_counts + taps}
                   </h2>
                </Typography>
                <Typography noWrap>
                   <h3>
                      自分のスコア:{' '}
                      {theme.rooms &&
-                        theme.rooms[room].user_room_total_taps + taps}
+                        theme.rooms[room]?.user_room_total_taps + taps}
                   </h3>
                </Typography>
             </div>

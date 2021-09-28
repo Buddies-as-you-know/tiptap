@@ -1,9 +1,7 @@
 import React, { FC, useEffect, useState, createContext } from 'react'
 
 import { Api } from '../../action/action'
-import RoomResultTemplate from '../templates/roomResultTemplate'
 import ThemeListTemplate from '../templates/themeListTemplate'
-import ThemeTemplate from '../templates/themeTemplate'
 
 type ContextProps = {
    themeList: any
@@ -27,6 +25,8 @@ const Themes: FC = () => {
    useEffect(() => {
       handleGetThemes(undefined)
    }, [])
+
+   console.log({ themeList })
 
    return (
       <div>

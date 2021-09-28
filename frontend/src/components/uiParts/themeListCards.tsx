@@ -56,26 +56,11 @@ const useStyles = makeStyles({
    },
 })
 
-type LeftTimeProps = {
-   isClose: boolean
-   displayTime: string
-}
-
-const object = {
-   isClose: false,
-   displayTime: '',
-}
 const ThemeListCards: FC = () => {
    const classes = useStyles()
    const history = useHistory()
-   const [leftTime, setLeftTime] = useState<LeftTimeProps>(object)
    const timeCalService = new TimeCalService()
    const { themeList } = useContext(ThemeListContext)
-   console.log(themeList)
-
-   // useEffect(() => {
-   //    setInterval(intervalCount, 1000)
-   // }, [])
 
    return (
       <>
@@ -101,7 +86,7 @@ const ThemeListCards: FC = () => {
                      </Typography>
                      <Typography className={classes.closeTime}>
                         {!value.is_closed ? (
-                           <>{leftTime.displayTime}</>
+                           <>残り{leftTime.displayTime}</>
                         ) : (
                            <>終了</>
                         )}
@@ -109,7 +94,7 @@ const ThemeListCards: FC = () => {
                   </CardContent>
                   <CardActions>
                      <Typography className={classes.totalCount}>
-                        トータルカウント：{value.total_counts}
+                        トータルタップ数：{value.total_counts}
                      </Typography>
                   </CardActions>
                </Card>

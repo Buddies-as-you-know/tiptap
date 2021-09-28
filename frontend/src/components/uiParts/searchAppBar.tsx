@@ -3,11 +3,9 @@ import InputBase from '@material-ui/core/InputBase'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { alpha, makeStyles } from '@material-ui/core/styles'
-import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
 import React, { FC, useContext } from 'react'
-import { Api } from 'src/action/action'
-import TipTapLogo from 'src/image/TipTap_logo.png'
+
 
 import Themes from '../../utils/theme'
 import { ThemeListContext } from '../pages/themes'
@@ -53,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
    },
    inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
       width: '100%',
@@ -82,11 +79,6 @@ const SearchAppBar: FC = () => {
          <AppBar position="fixed">
             <Toolbar>
                <Typography className={classes.title} variant="h6" noWrap>
-                  {/* <img
-                     src={TipTapLogo}
-                     alt="tiptap_logo"
-                     className={classes.imgStyle}
-                  /> */}
                   TipTap
                </Typography>
                <div className={classes.search}>
