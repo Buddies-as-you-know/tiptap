@@ -9,8 +9,9 @@
 
 
 # DEMO
+gifでアニメーションとして見せています。
 ![Animation](https://user-images.githubusercontent.com/69001166/163757592-4846ced9-8f7c-4c22-afa7-ce842f622e76.gif)
-
+ログイン画面
 ![スクリーンショット 2021-12-18 160349](https://user-images.githubusercontent.com/69001166/146632662-306410f6-2a61-4c56-97f2-255026b7e3d2.png)
 メールアドレスhikaru@example.com
 パスワードはpassword
